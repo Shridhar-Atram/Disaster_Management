@@ -2,8 +2,8 @@ import 'package:disaster_management/src/features/authentication/screens/welcome/
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class SplashScreenController extends GetxController {
-  static SplashScreenController get find => Get.find();
+class FadeInAnimationController extends GetxController {
+  static FadeInAnimationController get find => Get.find();
 
   RxBool animate = false.obs;
 
