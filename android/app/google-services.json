@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1051444101684",
+    "firebase_url": "https://gdscdisastermanagement-b0373-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "gdscdisastermanagement-b0373",
+    "storage_bucket": "gdscdisastermanagement-b0373.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1051444101684:android:5f4f880cfbf0e7d838c061",
+        "android_client_info": {
+          "package_name": "com.example.disaster_management"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1051444101684-d8734jsphdijaic9g6s7dt88qj1l8lei.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD2LG3jF__uZlVZlHc47qxO0N7jNBnPBBg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1051444101684-d8734jsphdijaic9g6s7dt88qj1l8lei.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
