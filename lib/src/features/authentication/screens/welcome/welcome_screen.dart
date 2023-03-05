@@ -5,6 +5,7 @@ import 'package:disaster_management/src/constants/colors.dart';
 import 'package:disaster_management/src/constants/sizes.dart';
 import 'package:disaster_management/src/features/authentication/screens/SignUP/sign_up.dart';
 import 'package:disaster_management/src/features/authentication/screens/login/login_Screen.dart';
+import 'package:disaster_management/src/features/volunteer/VolunteerReg.dart';
 import 'package:flutter/material.dart';
 
 import 'package:disaster_management/src/constants/image_strings.dart';
@@ -70,6 +71,13 @@ class WelcomeScreen extends StatelessWidget {
                         child: ElevatedButton(
                           onPressed: () => Get.to(() => const SignUpScreen()),
                           child: Text(tSignup.toUpperCase()),
+                        ),
+                      ),
+                       const SizedBox(width: 10.0),
+                      Expanded(
+                        child: ElevatedButton(
+                          onPressed: () => Get.to(() => const VolunteerReg()),
+                          child: Text('Volunteer Registration'),
                         ),
                       ),
                     ],
