@@ -39,6 +39,8 @@ dependencies:
   google_fonts: ^3.0.1
   get: ^4.6.5
   firebase_core: ^2.7.0
+  flutter_otp_text_field: ^1.1.1
+  firebase_auth: ^4.2.9
 
 dev_dependencies:
   flutter_test:

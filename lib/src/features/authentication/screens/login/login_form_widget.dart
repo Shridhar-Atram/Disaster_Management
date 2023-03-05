@@ -1,6 +1,9 @@
 import 'package:disaster_management/src/constants/sizes.dart';
 import 'package:disaster_management/src/constants/text_strings.dart';
+import 'package:disaster_management/src/features/authentication/screens/forget_password/forget_password_optional/forget_password_model_bottom_sheet.dart';
 import 'package:flutter/material.dart';
+
+import '../forget_password/forget_password_optional/ForgetPasswordBtnWidget.dart';
 
 class LoginForm extends StatelessWidget {
   const LoginForm({
@@ -39,7 +42,10 @@ class LoginForm extends StatelessWidget {
             Align(
               alignment: Alignment.centerRight,
               child: TextButton(
-                  onPressed: () {}, child: const Text(tForgetPassword)),
+                  onPressed: () {
+                    ForgetPasswordScreen.showmodelbottomsheet(context);
+                  },
+                  child: const Text(tForgetPassword)),
             ),
             SizedBox(
               width: double.infinity,

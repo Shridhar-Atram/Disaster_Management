@@ -27,7 +27,7 @@ class SignUpFooterWidget extends StatelessWidget {
           ),
         ),
         TextButton(
-          onPressed: () => Get.to(() => const LoginForm()),
+          onPressed: () => Get.to(() => LoginForm()),
           child: Text.rich(TextSpan(children: [
             TextSpan(
               text: tAlreadyHaveAnAccount,

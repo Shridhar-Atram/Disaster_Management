@@ -8,19 +8,21 @@ import 'package:flutter/material.dart';
 
 class TTextFormFieldTheme {
   TTextFormFieldTheme._();
-  static InputDecoration LightInputDecorationTheme = const InputDecorationTheme(
-      border: OutlineInputBorder(),
-      prefixIconColor: tSecondaryColor,
-      floatingLabelStyle: TextStyle(color: tSecondaryColor),
-      focusedBorder: OutlineInputBorder(
-        borderSide: BorderSide(width: 2, color: tSecondaryColor),
-      ));
+  static InputDecorationTheme LightInputDecorationTheme =
+      const InputDecorationTheme(
+          border: OutlineInputBorder(),
+          prefixIconColor: tSecondaryColor,
+          floatingLabelStyle: TextStyle(color: tSecondaryColor),
+          focusedBorder: OutlineInputBorder(
+            borderSide: BorderSide(width: 2, color: tSecondaryColor),
+          ));
 
-  static InputDecoration darkInputDecorationTheme = const InputDecorationTheme(
-      border: OutlineInputBorder(),
-      prefixIconColor: tPrimaryColor,
-      floatingLabelStyle: TextStyle(color: tPrimaryColor),
-      focusedBorder: OutlineInputBorder(
-        borderSide: BorderSide(width: 2, color: tPrimaryColor),
-      ));
+  static InputDecorationTheme darkInputDecorationTheme =
+      const InputDecorationTheme(
+          border: OutlineInputBorder(),
+          prefixIconColor: tPrimaryColor,
+          floatingLabelStyle: TextStyle(color: tPrimaryColor),
+          focusedBorder: OutlineInputBorder(
+            borderSide: BorderSide(width: 2, color: tPrimaryColor),
+          ));
 }
