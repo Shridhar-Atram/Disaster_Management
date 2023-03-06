@@ -38,14 +38,18 @@ class LocationSearchDialog extends StatelessWidget {
                     hintText: 'search_location',
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
-                      borderSide: BorderSide(style: BorderStyle.none, width: 0),
+                      borderSide: BorderSide(
+                        style: BorderStyle.none,
+                        width: 0,
+                        color: Colors.black,
+                      ),
                     ),
                     hintStyle: Theme.of(context).textTheme.headline2?.copyWith(
                           fontSize: 16,
                           color: Theme.of(context).disabledColor,
                         ),
                     filled: true,
-                    fillColor: Theme.of(context).cardColor,
+                    fillColor: Theme.of(context).focusColor,
                   ),
                   style: Theme.of(context).textTheme.headline2?.copyWith(
                         color: Theme.of(context).textTheme.bodyText1?.color,

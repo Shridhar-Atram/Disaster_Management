@@ -1,7 +1,9 @@
+import 'package:disaster_management/src/features/reporting_and_mapping/Database/firestore_service.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:geocoding/geocoding.dart' as geocoding;
 
+import 'disaster_reported_screen.dart';
 import 'location_search_dialogue.dart';
 
 class ReportDisasterPage extends StatefulWidget {
@@ -12,9 +14,9 @@ class ReportDisasterPage extends StatefulWidget {
 }
 
 class _ReportDisasterPageState extends State<ReportDisasterPage> {
-  String _selectedDisasterType = '';
+  String _selectedDisasterType = 'Earthquake';
   String _selectedArea = '';
-  String _currentStatus = '';
+  String _currentStatus = 'Ongoing';
   final TextEditingController _controller = TextEditingController();
 
   final List<String> _disasterTypes = [
@@ -57,46 +59,6 @@ class _ReportDisasterPageState extends State<ReportDisasterPage> {
               'Report a disaster',
               style: Theme.of(context).textTheme.headline6,
             ),
-            SizedBox(height: 16.0),
-            DropdownButtonFormField<String>(
-              value: _selectedDisasterType,
-              onChanged: (String? newValue) {
-                setState(() {
-                  _selectedDisasterType = newValue!;
-                });
-              },
-              items:
-                  _disasterTypes.map<DropdownMenuItem<String>>((String value) {
-                return DropdownMenuItem<String>(
-                  value: value,
-                  child: Text(value),
-                );
-              }).toList(),
-              decoration: const InputDecoration(
-                border: OutlineInputBorder(),
-                hintText: 'Select Disaster type',
-                contentPadding:
-                    EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
-              ),
-            ),
-            // DropdownButtonFormField<String>(
-            //   value: _selectedDisasterType,
-            //   decoration: InputDecoration(
-            //     labelText: 'Type of Disaster',
-            //     border: OutlineInputBorder(),
-            //   ),
-            //   items: _disasterTypes
-            //       .map((type) => DropdownMenuItem(
-            //             value: type,
-            //             child: Text(type),
-            //           ))
-            //       .toList(),
-            //   onChanged: (value) {
-            //     setState(() {
-            //       _selectedDisasterType = value!;
-            //     });
-            //   },
-            // ),
             const SizedBox(height: 16.0),
             TextField(
               controller: _controller,
@@ -106,7 +68,7 @@ class _ReportDisasterPageState extends State<ReportDisasterPage> {
                   borderRadius: BorderRadius.circular(5.0),
                 ),
                 hintText: 'Select Addrress',
-                contentPadding: EdgeInsets.all(10.0),
+                contentPadding: EdgeInsets.all(18.0),
               ),
               onTap: () async {
                 final result = await Navigator.of(context)
@@ -119,34 +81,89 @@ class _ReportDisasterPageState extends State<ReportDisasterPage> {
                     () {
                       _controller.text =
                           "${placemarks[0].locality}, ${placemarks[0].administrativeArea}, ${placemarks[0].country}";
+                      _selectedArea = _controller.text;
                     },
                   );
                 }
               },
             ),
+            SizedBox(height: 16.0),
+            FormField<String>(
+              initialValue: _selectedDisasterType,
+              builder: (FormFieldState<String> state) {
+                return InputDecorator(
+                  decoration: InputDecoration(
+                    labelText: 'Type of Disaster',
+                    border: OutlineInputBorder(),
+                  ),
+                  child: DropdownButtonHideUnderline(
+                    child: DropdownButton<String>(
+                      value: state.value,
+                      isDense: true,
+                      onChanged: (String? newValue) {
+                        setState(() {
+                          state.didChange(newValue);
+                          _selectedDisasterType = newValue!;
+                        });
+                      },
+                      items: _disasterTypes
+                          .map((type) => DropdownMenuItem(
+                                value: type,
+                                child: Text(type),
+                              ))
+                          .toList(),
+                    ),
+                  ),
+                );
+              },
+            ),
             const SizedBox(height: 16.0),
-            DropdownButtonFormField<String>(
-              value: _currentStatus,
-              decoration: const InputDecoration(
-                labelText: 'Current Status of Disaster',
-                border: OutlineInputBorder(),
-              ),
-              items: _statusOptions
-                  .map((status) => DropdownMenuItem(
-                        value: status,
-                        child: Text(status),
-                      ))
-                  .toList(),
-              onChanged: (value) {
-                setState(() {
-                  _currentStatus = value!;
-                });
+            FormField<String>(
+              initialValue: _currentStatus,
+              builder: (FormFieldState<String> state) {
+                return InputDecorator(
+                  decoration: InputDecoration(
+                    labelText: 'Current Status',
+                    border: OutlineInputBorder(),
+                  ),
+                  child: DropdownButtonHideUnderline(
+                    child: DropdownButton<String>(
+                      value: state.value,
+                      isDense: true,
+                      onChanged: (String? newValue) {
+                        setState(() {
+                          state.didChange(newValue);
+                          _currentStatus = newValue!;
+                        });
+                      },
+                      items: _statusOptions
+                          .map((status) => DropdownMenuItem(
+                                value: status,
+                                child: Text(status),
+                              ))
+                          .toList(),
+                    ),
+                  ),
+                );
               },
             ),
             const SizedBox(height: 16.0),
             ElevatedButton(
-              onPressed: () {
-                // TODO: Implement disaster reporting functionality
+              onPressed: () async {
+                await FirestoreService().reportDisaster(
+                  context,
+                  _selectedArea,
+                  _selectedDisasterType,
+                  _currentStatus,
+                );
+                Navigator.of(context).pushAndRemoveUntil(
+                    MaterialPageRoute(
+                        builder: (_) => DisasterReportedScreen(
+                              area: _selectedArea,
+                              disasterType: _selectedDisasterType,
+                              currentStatus: _currentStatus,
+                            )),
+                    (route) => false);
               },
               child: Text('Report Disaster'),
             ),

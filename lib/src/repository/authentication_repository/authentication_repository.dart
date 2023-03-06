@@ -1,5 +1,3 @@
-import 'dart:html';
-
 import 'package:disaster_management/src/features/authentication/screens/welcome/welcome_screen.dart';
 import 'package:disaster_management/src/repository/authentication_repository/exceptions/signup_email_password_failure.dart';
 import 'package:flutter/material.dart';
