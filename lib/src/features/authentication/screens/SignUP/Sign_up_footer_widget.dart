@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 
+import '../login/login_Screen.dart';
+
 class SignUpFooterWidget extends StatelessWidget {
   const SignUpFooterWidget({
     Key? key,
@@ -27,7 +29,7 @@ class SignUpFooterWidget extends StatelessWidget {
           ),
         ),
         TextButton(
-          onPressed: () => Get.to(() => const LoginForm()),
+          onPressed: () => Get.to(() => const LoginScreen()),
           child: Text.rich(TextSpan(children: [
             TextSpan(
               text: tAlreadyHaveAnAccount,

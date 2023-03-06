@@ -8,10 +8,12 @@ import 'package:flutter/foundation.dart'
 ///
 /// Example:
 /// ```dart
-//import 'firebase_options.dart';
-// ignore: non_constant_identifier_names
+/// import 'firebase_options.dart';
 /// // ...
-
+/// await Firebase.initializeApp(
+///   options: DefaultFirebaseOptions.currentPlatform,
+/// );
+/// ```
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
@@ -47,8 +49,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '1051444101684',
     projectId: 'gdscdisastermanagement-b0373',
     authDomain: 'gdscdisastermanagement-b0373.firebaseapp.com',
-    databaseURL:
-        'https://gdscdisastermanagement-b0373-default-rtdb.asia-southeast1.firebasedatabase.app',
+    databaseURL: 'https://gdscdisastermanagement-b0373-default-rtdb.asia-southeast1.firebasedatabase.app',
     storageBucket: 'gdscdisastermanagement-b0373.appspot.com',
   );
 
@@ -57,8 +58,7 @@ class DefaultFirebaseOptions {
     appId: '1:1051444101684:android:5f4f880cfbf0e7d838c061',
     messagingSenderId: '1051444101684',
     projectId: 'gdscdisastermanagement-b0373',
-    databaseURL:
-        'https://gdscdisastermanagement-b0373-default-rtdb.asia-southeast1.firebasedatabase.app',
+    databaseURL: 'https://gdscdisastermanagement-b0373-default-rtdb.asia-southeast1.firebasedatabase.app',
     storageBucket: 'gdscdisastermanagement-b0373.appspot.com',
   );
 
@@ -67,11 +67,10 @@ class DefaultFirebaseOptions {
     appId: '1:1051444101684:ios:ef2aa4cdea1c119238c061',
     messagingSenderId: '1051444101684',
     projectId: 'gdscdisastermanagement-b0373',
-    databaseURL:
-        'https://gdscdisastermanagement-b0373-default-rtdb.asia-southeast1.firebasedatabase.app',
+    databaseURL: 'https://gdscdisastermanagement-b0373-default-rtdb.asia-southeast1.firebasedatabase.app',
     storageBucket: 'gdscdisastermanagement-b0373.appspot.com',
-    iosClientId:
-        '1051444101684-43np8hgnm46hatpvck66dh6oijblrv3h.apps.googleusercontent.com',
+    androidClientId: '1051444101684-tg2l1rfocjhvtetdqtifem4r4pjjvrmj.apps.googleusercontent.com',
+    iosClientId: '1051444101684-43np8hgnm46hatpvck66dh6oijblrv3h.apps.googleusercontent.com',
     iosBundleId: 'com.example.disasterManagement',
   );
 
@@ -80,11 +79,10 @@ class DefaultFirebaseOptions {
     appId: '1:1051444101684:ios:ef2aa4cdea1c119238c061',
     messagingSenderId: '1051444101684',
     projectId: 'gdscdisastermanagement-b0373',
-    databaseURL:
-        'https://gdscdisastermanagement-b0373-default-rtdb.asia-southeast1.firebasedatabase.app',
+    databaseURL: 'https://gdscdisastermanagement-b0373-default-rtdb.asia-southeast1.firebasedatabase.app',
     storageBucket: 'gdscdisastermanagement-b0373.appspot.com',
-    iosClientId:
-        '1051444101684-43np8hgnm46hatpvck66dh6oijblrv3h.apps.googleusercontent.com',
+    androidClientId: '1051444101684-tg2l1rfocjhvtetdqtifem4r4pjjvrmj.apps.googleusercontent.com',
+    iosClientId: '1051444101684-43np8hgnm46hatpvck66dh6oijblrv3h.apps.googleusercontent.com',
     iosBundleId: 'com.example.disasterManagement',
   );
 }

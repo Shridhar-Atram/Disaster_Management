@@ -47,6 +47,9 @@ dependencies:
   geocoding: ^2.0.5
   flutter_typeahead: ^4.3.7
   flutter_google_places: ^0.2.3
+  flutter_otp_text_field: ^1.1.1
+  firebase_auth: ^4.2.9
+  line_awesome_flutter: ^2.0.0
 
 dev_dependencies:
   flutter_test:

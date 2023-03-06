@@ -36,9 +36,10 @@ class _DisasterListState extends State<DisasterList> {
               shrinkWrap: true,
               itemBuilder: (context, i) {
                 //  Map thisItem = volunteers[i];
-              //  final s1 = volunteers[i].district;
+                //  final s1 = volunteers[i].district;
                 final sortedVol = volunteers
-                  ..sort((item1, item2) => item1.district.compareTo(item2.district));
+                  ..sort((item1, item2) =>
+                      item1.district.compareTo(item2.district));
                 final volunteer = sortedVol[i];
                 return FinalVolunteer(
                     volunteer.name, volunteer.cnumber, volunteer.district);
