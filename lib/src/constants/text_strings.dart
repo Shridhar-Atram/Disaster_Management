@@ -43,3 +43,22 @@ const String tForgetMailSubTitle =
 const String totpTitle = "CO\DE";
 const String totpSubTitle = "Verification";
 const String totpMessage = "Enter the verification code sent at ";
+
+//profilr Screen -Text
+const String tProfile = "Profile";
+const String tEditProfile = 'Edit Profile';
+const String tLogoutDialogHeading = "Logout";
+const String tProfileHeading = "Coding with T";
+const String tProfileSubHeading = "Shridharatram555@gmail.com";
+
+//-menu
+//const String tMenu5 = tLogout;
+const String tMenu1 = "Settings";
+const String tMenu4 = "Information";
+const String tMenu2 = "Billing Details";
+const String tMenu3 = "User Management";
+
+//
+const String tDelete = "Delete";
+const String tJoined = "Joined";
+const String tjoinedAt = "6  March 2023";
