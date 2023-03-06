@@ -1,29 +1,22 @@
+import 'package:disaster_management/src/constants/colors.dart';
+import 'package:disaster_management/src/constants/sizes.dart';
+import 'package:flutter/material.dart';
 
-// import 'package:disaster_management/src/constants/colors.dart';
-// import 'package:flutter/material.dart';
+class TOutlinedButtonTheme {
+  TOutlinedButtonTheme._();
 
-// import '../../../constants/sizes.dart';
-
-// class TOutlinedButtonThene {
-// TOutlinedButtonThene._();
-
-// static final lightOutlinedButtonTheme = OutlinedButtonTheme(
-//   child: OutlinedButton.styleFrom(
-//     shape: OutlinedButton.styleFrom(
-//       shape: RoundedRectangleBorder(),
-//       foregroundColor: tSecondaryColor,
-//       side: BorderSide(color: tSecondaryColor),
-//       padding: EdgeInsets.symmetric(vertical: tButtonHeight),
-//     )
-// );
-// // ignore: prefer_const_constructors
-// static final darkOutlinedButtonTheme = OutlinedButtonThemeData(
-//   style: OutlinedButton.styleFrom(
-//     shape: OutlinedButton.styleFrom(
-//       shape: RoundedRectangleBorder(),
-//       foregroundColor: tSecondaryColor,
-//       side: BorderSide(color: tSecondaryColor),
-//       padding: EdgeInsets.symmetric(vertical: tButtonHeight),
-//     ),
-// );
-// }
+  static final lightOutlinedButtonTheme = OutlinedButtonThemeData(
+      style: OutlinedButton.styleFrom(
+    shape: RoundedRectangleBorder(),
+    foregroundColor: tSecondaryColor,
+    side: BorderSide(color: tSecondaryColor),
+    padding: EdgeInsets.symmetric(vertical: tButtonHeight),
+  ));
+  static final darkOutlinedButtonTheme = OutlinedButtonThemeData(
+      style: OutlinedButton.styleFrom(
+    shape: RoundedRectangleBorder(),
+    foregroundColor: tWhiteColor,
+    side: BorderSide(color: tWhiteColor),
+    padding: EdgeInsets.symmetric(vertical: tButtonHeight),
+  ));
+}
