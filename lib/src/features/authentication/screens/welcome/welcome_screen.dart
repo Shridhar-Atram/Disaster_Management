@@ -13,6 +13,8 @@ import 'package:disaster_management/src/constants/text_strings.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_instance/src/extension_instance.dart';
+import '../../../reporting_and_mapping/google_map_screen.dart';
+import '../../../reporting_and_mapping/report_disaster_page.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({Key? key}) : super(key: key);
@@ -42,51 +44,104 @@ class WelcomeScreen extends StatelessWidget {
                 rightAfter: 0,
                 rightBefore: 0),
             child: Container(
-              padding: const EdgeInsets.all(tDefaultSize),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Image(
-                      image: const AssetImage(tWelcomeScreenImage),
-                      height: height * 0.6),
-                  Column(
-                    children: [
-                      Text(tWelcomeTitle,
-                          style: Theme.of(context).textTheme.headline3),
-                      Text(tWelcomeSubTitle,
-                          style: Theme.of(context).textTheme.bodyText1,
-                          textAlign: TextAlign.center),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      Expanded(
-                        child: OutlinedButton(
-                          onPressed: () => Get.to(() => const LoginScreen()),
-                          child: Text(tLogin.toUpperCase()),
+              padding: const EdgeInsets.all(12),
+              child: SingleChildScrollView(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Image(
+                        image: const AssetImage(tWelcomeScreenImage),
+                        height: height * 0.6),
+                    Column(
+                      children: [
+                        Text(tWelcomeTitle,
+                            style: Theme.of(context).textTheme.headline3),
+                        Text(tWelcomeSubTitle,
+                            style: Theme.of(context).textTheme.bodyText1,
+                            textAlign: TextAlign.center),
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: OutlinedButton(
+                            onPressed: () => Get.to(() => const LoginScreen()),
+                            child: Text(tLogin.toUpperCase()),
+                          ),
                         ),
-                      ),
-                      const SizedBox(width: 10.0),
-                      Expanded(
-                        child: ElevatedButton(
-                          onPressed: () => Get.to(() => const SignUpScreen()),
-                          child: Text(tSignup.toUpperCase()),
+                        const SizedBox(width: 10.0),
+                        Expanded(
+                          child: ElevatedButton(
+                            onPressed: () => Get.to(() => const SignUpScreen()),
+                            child: Text(tSignup.toUpperCase()),
+                          ),
                         ),
-                      ),
-                       const SizedBox(width: 10.0),
-                      Expanded(
-                        child: ElevatedButton(
-                          onPressed: () => Get.to(() => const VolunteerReg()),
-                          child: Text('Volunteer Registration'),
+                        const SizedBox(width: 10.0),
+                        Expanded(
+                          child: ElevatedButton(
+                            onPressed: () => Get.to(() => const VolunteerReg()),
+                            child: Text('Volunteer Registration'),
+                          ),
                         ),
-                      ),
-                    ],
-                  )
-                ],
+                      ],
+                    )
+                  ],
+                ),
               ),
             ),
           ),
         ],
+      ),
+      appBar: AppBar(
+        title: Text("Catlog App"),
+      ),
+      drawer: Drawer(
+        child: ListView(
+          children: [
+            const DrawerHeader(
+              decoration: BoxDecoration(
+                color: Colors.blue,
+              ),
+              child: UserAccountsDrawerHeader(
+                decoration: BoxDecoration(color: Colors.blue),
+                accountEmail: Text("vivekmote3416@gmail.com"),
+                accountName: Text("Vivek Mote"),
+                currentAccountPictureSize: Size.square(50),
+                currentAccountPicture: CircleAvatar(
+                  backgroundColor: Color.fromARGB(255, 165, 255, 137),
+                  child: Text(
+                    "V",
+                    style: TextStyle(fontSize: 30.0, color: Colors.blue),
+                  ), //Text
+                ),
+              ),
+            ),
+            ListTile(
+              leading: const Icon(Icons.dangerous_outlined),
+              title: const Text('Report a disaster'),
+              onTap: () {
+                Navigator.of(context).pop();
+                Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) {
+                    return const ReportDisasterPage();
+                  }),
+                );
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.map),
+              title: const Text("Map"),
+              onTap: () {
+                Navigator.of(context).pop();
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => GoogleMapScreen(),
+                  ),
+                );
+              },
+            )
+          ],
+        ),
       ),
     );
   }

@@ -15,8 +15,11 @@ class LoginHeaderWidget extends StatelessWidget {
         Image(
             image: const AssetImage(tWelcomeScreenImage),
             height: size.height * 0.2),
-        Text(tLoginTitle, style: Theme.of(context).textTheme.headlineSmall),
-        Text(TloginSubtitle, style: Theme.of(context).textTheme.displaySmall),
+        Text(
+          tLoginTitle,
+          style: Theme.of(context).textTheme.headlineSmall,
+        ),
+        Text(TloginSubtitle, style: Theme.of(context).textTheme.headlineMedium),
       ],
     );
   }
