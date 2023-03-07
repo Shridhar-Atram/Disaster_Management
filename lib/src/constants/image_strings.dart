@@ -8,3 +8,10 @@ const String ForgetPassword =
     "assests\images\Forget-password\FogotPassword.png";
 
 const String tprofileImage = "assests\images\Profile.png";
+
+const String tUserProfileImage = " assests/images/dashboard/dash-01.png";
+const String tBannerImage1 = "assests/images/dashboard/dash-01.png";
+const String tBannerImage2 = "assests/images/dashboard/dash-02.png";
+const String tTopCourseImage1 = "assests/images/dashboard/dash-03.png";
+const String tBookmarkIcon = "assests/images/dashboard/bookmark.png";
+const String tTopCourseImage2 = "assests/images/dashboard/dash-04.png";
