@@ -1,6 +1,7 @@
 import 'package:disaster_management/src/constants/sizes.dart';
 import 'package:disaster_management/src/constants/text_strings.dart';
 import 'package:disaster_management/src/features/authentication/controllers/signup_controller.dart';
+import 'package:disaster_management/src/features/authentication/models/user_model.dart';
 import 'package:disaster_management/src/features/authentication/screens/forget_password/forget_password_otp/otp_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -55,9 +56,14 @@ class SignUpFormWidget extends StatelessWidget {
                     // SignUpController.instance.registerUser(
                     //     controller.email.text.trim(),
                     //     controller.password.text.trim());
-                    SignUpController.instance
-                        .phoneAuthentication(controller.phoneNo.text.trim());
-                    Get.to(() => const OTPScreen());
+                    //SignUpController.instance
+                    //  .phoneAuthentication(controller.phoneNo.text.trim());
+                    final user = UserModel(
+                        email: controller.email.text.trim(),
+                        password: controller.password.text.trim(),
+                        fullName: controller.fullName.text.trim(),
+                        phoneNo: controller.phoneNo.text.trim());
+                    SignUpController.instance.createUser(user);
                   }
                 },
                 child: Text(tSignup.toUpperCase()),

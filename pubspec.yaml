@@ -42,6 +42,7 @@ dependencies:
   flutter_otp_text_field: ^1.1.1
   firebase_auth: ^4.2.9
   line_awesome_flutter: ^2.0.0
+  cloud_firestore: ^4.4.3
 
 dev_dependencies:
   flutter_test:
@@ -77,6 +78,7 @@ flutter:
       - assests/images/help.png
       - assests/logo/Google.png
       - assests/images/
+      - assests/images/dashboard/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

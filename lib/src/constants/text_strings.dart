@@ -62,3 +62,14 @@ const String tMenu3 = "User Management";
 const String tDelete = "Delete";
 const String tJoined = "Joined";
 const String tjoinedAt = "6  March 2023";
+
+//dashboard
+
+const String tDashboardTitle = "Hey,Shridhar";
+const String tDashboardHeading = "Explore Courses";
+const String tDashboardSearch = "Search";
+const String tDashboardBannerTitle1 = "Flutter";
+const String tDashboardBannerTitle2 = "Web Development";
+const String tDashboardBannerSubTitle = "10 leasons";
+const String tDashboardTopCourses = "Top Courses";
+const String tDashboardButton = "View All";
