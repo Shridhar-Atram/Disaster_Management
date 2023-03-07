@@ -4,8 +4,10 @@ import 'package:disaster_management/src/features/reporting_and_mapping/location_
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:geocoding/geocoding.dart';
+import 'package:provider/provider.dart';
 
-import 'add_marker.dart';
+import 'Database/firestore_service.dart';
+import 'Providers/marker_provider.dart';
 
 class GoogleMapScreen extends StatefulWidget {
   @override
@@ -19,60 +21,80 @@ class _GoogleMapScreenState extends State<GoogleMapScreen> {
       CameraPosition(target: LatLng(17.277693, 74.1843535), zoom: 12);
   late LatLng _searchLocation;
 
-  Future<void> addCustomMarkers(double lat, double lon) async {
-    BitmapDescriptor customMarker1 =
-        BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueViolet);
-
-    Marker marker1 = Marker(
-      markerId: MarkerId('marker1'),
-      position: LatLng(lat, lon),
-      icon: customMarker1,
-      infoWindow: const InfoWindow(title: 'Disaster here'),
-    );
-
-    _markers.add(marker1);
-  }
-
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        title: ListTile(
-          leading: const Icon(
-            Icons.location_on,
-          ),
-          title: const Text("Search"),
-          onTap: () async {
-            final result = await Navigator.of(context)
-                .pushNamed(LocationSearchDialog.routeName);
+    final markerProvider = Provider.of<MarkerProvider>(context, listen: false);
 
-            if (result is LatLng) {
-              setState(
-                () {
-                  _searchLocation = result;
-                  _markers.clear();
-                  _markers.add(
-                    Marker(
-                      markerId: const MarkerId('search'),
-                      position: _searchLocation,
-                      infoWindow: const InfoWindow(title: "Location"),
-                    ),
-                  );
-                },
-              );
-              _goToSearchLocation();
-            }
-          },
+    return Theme(
+      data: ThemeData(
+        primarySwatch: Colors.green,
+        appBarTheme: const AppBarTheme(
+          backgroundColor: Colors.green,
         ),
       ),
-      body: GoogleMap(
-        mapType: MapType.normal,
-        initialCameraPosition: _initialPosition,
-        markers: Set.from(_markers),
-        onMapCreated: (GoogleMapController controller) {
-          _controller.complete(controller);
-        },
+      child: Scaffold(
+        appBar: AppBar(
+          iconTheme: const IconThemeData(
+            color: Colors.black54, // Change color here
+          ),
+          backgroundColor: Colors.green[100],
+          title: GestureDetector(
+            child: Container(
+              decoration: BoxDecoration(
+                color: Colors.green[300],
+                borderRadius: BorderRadius.circular(10.0),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.all(12),
+                child: Row(
+                  children: const [
+                    Icon(
+                      Icons.location_on,
+                      color: Colors.white,
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Text("Search"),
+                  ],
+                ),
+              ),
+            ),
+            onTap: () async {
+              final result = await Navigator.of(context)
+                  .pushNamed(LocationSearchDialog.routeName);
+
+              if (result is LatLng) {
+                setState(
+                  () {
+                    _searchLocation = result;
+                    _markers.add(
+                      Marker(
+                        markerId: const MarkerId('search'),
+                        position: _searchLocation,
+                        infoWindow: const InfoWindow(title: "Location"),
+                      ),
+                    );
+                  },
+                );
+                _goToSearchLocation();
+              }
+            },
+          ),
+        ),
+        body: Consumer<MarkerProvider>(
+          builder: (context, provider, child) {
+            return GoogleMap(
+              mapType: MapType.normal,
+              initialCameraPosition: _initialPosition,
+              markers: Set.from(provider.markers),
+              onMapCreated: (GoogleMapController controller) async {
+                _controller.complete(controller);
+                await FirestoreService().getDataFromFirestore(context);
+              },
+            );
+          },
+        ),
       ),
     );
   }
