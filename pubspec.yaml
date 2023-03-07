@@ -39,6 +39,14 @@ dependencies:
   google_fonts: ^3.0.1
   get: ^4.6.5
   firebase_core: ^2.7.0
+  google_maps_flutter: ^2.2.4
+  dio: ^5.0.1
+  uuid: ^3.0.7
+  http: ^0.13.5
+  google_places_flutter: ^0.0.3
+  geocoding: ^2.0.5
+  flutter_typeahead: ^4.3.7
+  flutter_google_places: ^0.2.3
   flutter_otp_text_field: ^1.1.1
   firebase_auth: ^4.2.9
   line_awesome_flutter: ^2.0.0
@@ -59,7 +67,7 @@ flutter_native_splash:
     icon_background_color: "#f7f6f1"
     image_dark: assests/images/Splash.png
     icon_background_color_dark: "#272727"
-  
+
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

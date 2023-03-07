@@ -1,5 +1,7 @@
 import 'package:disaster_management/firebase_options.dart';
 import 'package:disaster_management/src/features/authentication/screens/splash_Screen/splash_Screen.dart';
+import 'package:disaster_management/src/features/reporting_and_mapping/location_controller.dart';
+import 'package:disaster_management/src/features/reporting_and_mapping/location_search_dialogue.dart';
 import 'package:disaster_management/src/repository/authentication_repository/authentication_repository.dart';
 import 'package:disaster_management/src/utils/theme/theme.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -18,14 +20,12 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Get.put(LocationController());
     return GetMaterialApp(
       theme: TAppTheme.lightTheme,
       darkTheme: TAppTheme.darkTheme,
       themeMode: ThemeMode.system,
-      debugShowCheckedModeBanner: false,
-      defaultTransition: Transition.leftToRightWithFade,
-      transitionDuration: const Duration(milliseconds: 500),
-      home: const SplashScreen(),
+      home: SplashScreen(),
     );
   }
 }
