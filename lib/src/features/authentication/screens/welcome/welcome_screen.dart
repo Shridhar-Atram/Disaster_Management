@@ -79,7 +79,7 @@ class WelcomeScreen extends StatelessWidget {
                         const SizedBox(width: 10.0),
                         Expanded(
                           child: ElevatedButton(
-                            onPressed: () => Get.to(() => const VolunteerReg()),
+                            onPressed: () => Get.to(() =>  VolunteerReg()),
                             child: Text('Volunteer Registration'),
                           ),
                         ),

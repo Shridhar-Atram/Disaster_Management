@@ -1,9 +1,34 @@
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 
-class VolunteerReg extends StatelessWidget {
-  const VolunteerReg({Key? key}) : super(key: key);
+class VolunteerReg extends StatefulWidget {
+   VolunteerReg({Key? key}) : super(key: key);
 
   @override
+   State<VolunteerReg> createState() => _VolunteerRegState();
+}
+class _VolunteerRegState extends State<VolunteerReg>{
+   TextEditingController _controllerName = TextEditingController();
+  TextEditingController _controllerCnumber = TextEditingController();
+  TextEditingController _controllerState = TextEditingController();
+  TextEditingController _controllerDistrict = TextEditingController();
+  TextEditingController _controllerAddress = TextEditingController();
+  TextEditingController _controllerInterests = TextEditingController();
+
+  GlobalKey<FormState> key = GlobalKey();
+  CollectionReference _reference =
+      FirebaseFirestore.instance.collection('volunteer_reg');
+
+void clearText() {
+  _controllerName.clear();
+   _controllerCnumber.clear();
+  _controllerState.clear();
+  _controllerDistrict.clear();
+  _controllerAddress.clear();
+  _controllerInterests.clear();
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('Volunteers Registration')),
@@ -21,7 +46,7 @@ class VolunteerReg extends StatelessWidget {
                    margin:EdgeInsets.fromLTRB(4,10,4,4),
                    padding:EdgeInsets.all(1.0),
                           child: TextFormField(
-                         // controller: _controllerdescription,
+                          controller: _controllerName,
                          
                           style: TextStyle(
                               fontSize: 15.0, fontWeight: FontWeight.bold),
@@ -47,7 +72,7 @@ class VolunteerReg extends StatelessWidget {
                    margin:EdgeInsets.all(1.0),
                    padding:EdgeInsets.all(1.0),
                           child: TextFormField(
-                         // controller: _controllerdescription,
+                          controller: _controllerCnumber,
                          
                           style: TextStyle(
                               fontSize: 15.0, fontWeight: FontWeight.bold,),
@@ -73,7 +98,7 @@ class VolunteerReg extends StatelessWidget {
                    margin:EdgeInsets.all(1.0),
                    padding:EdgeInsets.all(1.0),
                           child: TextFormField(
-                         // controller: _controllerdescription,
+                         controller: _controllerState,
                          
                           style: TextStyle(
                               fontSize: 15.0, fontWeight: FontWeight.bold,),
@@ -99,7 +124,7 @@ class VolunteerReg extends StatelessWidget {
                    margin:EdgeInsets.all(1.0),
                    padding:EdgeInsets.all(1.0),
                           child: TextFormField(
-                         // controller: _controllerdescription,
+                          controller: _controllerDistrict,
                          
                           style: TextStyle(
                               fontSize: 15.0, fontWeight: FontWeight.bold,),
@@ -122,7 +147,7 @@ class VolunteerReg extends StatelessWidget {
                    margin:EdgeInsets.all(1.0),
                    padding:EdgeInsets.all(1.0),
                           child: TextFormField(
-                         // controller: _controllerdescription,
+                          controller: _controllerAddress,
                          
                           style: TextStyle(
                               fontSize: 15.0, fontWeight: FontWeight.bold,),
@@ -145,7 +170,7 @@ class VolunteerReg extends StatelessWidget {
                    margin:EdgeInsets.all(1.0),
                    padding:EdgeInsets.all(1.0),
                           child: TextFormField(
-                         // controller: _controllerdescription,
+                          controller: _controllerInterests,
                          
                           style: TextStyle(
                               fontSize: 15.0, fontWeight: FontWeight.bold,),
@@ -180,7 +205,28 @@ class VolunteerReg extends StatelessWidget {
                                       color: Colors.white)),
                             ),
                             onTap: () async {
-                            
+                               if (key.currentState!.validate()) {
+                               
+                                String vName = _controllerName.text;
+                                String vNumber =
+                                    _controllerCnumber.text;
+                                     String vState = _controllerState.text;
+                                      String vDistrict = _controllerDistrict.text;
+                                       String vAddress = _controllerAddress.text;
+                                        String vInterests = _controllerInterests.text;
+
+                                Map<String, String> dataToSend = {
+                                  'name': vName,
+                                  'number': vNumber,
+                                  'state': vState,
+                                  'district':vDistrict,
+                                  'address':vAddress,
+                                  'interests': vInterests,
+                                 
+                                };
+                                _reference.add(dataToSend);
+                                 clearText();
+                              }
                               }
                              
                             
