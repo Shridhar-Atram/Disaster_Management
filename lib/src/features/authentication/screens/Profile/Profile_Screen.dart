@@ -2,6 +2,7 @@ import 'package:disaster_management/src/constants/colors.dart';
 import 'package:disaster_management/src/constants/image_strings.dart';
 import 'package:disaster_management/src/constants/sizes.dart';
 import 'package:disaster_management/src/constants/text_strings.dart';
+import 'package:disaster_management/src/features/authentication/screens/Dashboard/dashboard.dart';
 import 'package:disaster_management/src/features/authentication/screens/Profile/update_profile_screen.dart';
 import 'package:disaster_management/src/features/authentication/screens/Profile/widget/profile_menu.dart';
 import 'package:flutter/material.dart';
@@ -22,7 +23,10 @@ class ProfileSceen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-            onPressed: () {}, icon: const Icon(LineAwesomeIcons.angle_left)),
+            onPressed: () {
+              Get.to(Dashboard());
+            },
+            icon: const Icon(LineAwesomeIcons.angle_left)),
         title: Text(
           tProfile,
           // ignore: deprecated_member_use
@@ -95,13 +99,27 @@ class ProfileSceen extends StatelessWidget {
               ProfileMenu(
                 title: 'Report a diseastor',
                 icon: LineAwesomeIcons.cog,
-                onPress: () {},
+                onPress: () {
+                  Navigator.of(context).pop();
+                  Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) {
+                      return const ReportDisasterPage();
+                    }),
+                  );
+                },
                 endIcon: false,
               ),
               ProfileMenu(
                 title: 'Maps',
                 icon: LineAwesomeIcons.map,
-                onPress: () {},
+                onPress: () {
+                  Navigator.of(context).pop();
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => GoogleMapScreen(),
+                    ),
+                  );
+                },
                 endIcon: false,
               ),
               ProfileMenu(
