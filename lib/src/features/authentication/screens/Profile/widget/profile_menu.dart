@@ -1,19 +1,17 @@
+import 'package:disaster_management/src/constants/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 
-import '../../../../../constants/colors.dart';
-import '../../../../../constants/text_strings.dart';
-
-class ProfileMenuWidget extends StatelessWidget {
-  const ProfileMenuWidget({
+class ProfileMenu extends StatelessWidget {
+  const ProfileMenu({
     Key? key,
     required this.title,
     required this.icon,
     required this.onPress,
     required this.endIcon,
     this.textColor,
+    // required Null Function() onPress,
   }) : super(key: key);
-
   final String title;
   final IconData icon;
   final VoidCallback onPress;
@@ -27,27 +25,34 @@ class ProfileMenuWidget extends StatelessWidget {
     return ListTile(
       onTap: onPress,
       leading: Container(
-        width: 40,
-        height: 40,
+        width: 30,
+        height: 30,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(100),
+          color: iconColor.withOpacity(0.1),
+        ),
+        child: Icon(
+          icon,
+          color: tAccentColor,
+        ),
+      ),
+      title: Text(
+        title,
+        style: Theme.of(context).textTheme.bodyText1?.apply(color: textColor),
+      ),
+      trailing: Container(
+        width: 30,
+        height: 30,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(100),
           color: tAccentColor.withOpacity(0.1),
         ),
-        child: Icon(icon, color: tAccentColor),
+        child: Icon(
+          LineAwesomeIcons.angle_right,
+          size: 18.0,
+          color: tAccentColor,
+        ),
       ),
-      title: Text(tMenu1,
-          style:
-              Theme.of(context).textTheme.bodyText1?.apply(color: textColor)),
-      trailing: endIcon
-          ? Container(
-              width: 30,
-              height: 40,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(100),
-                color: Colors.grey.withOpacity(0.1),
-              ),
-              child: const Icon(LineAwesomeIcons.cog, color: Colors.grey))
-          : null,
     );
   }
 }

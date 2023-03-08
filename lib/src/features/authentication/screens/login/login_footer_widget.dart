@@ -2,6 +2,7 @@ import 'package:disaster_management/src/constants/image_strings.dart';
 import 'package:disaster_management/src/constants/sizes.dart';
 import 'package:disaster_management/src/constants/text_strings.dart';
 import 'package:disaster_management/src/features/authentication/screens/SignUP/sign_up.dart';
+import 'package:disaster_management/src/features/authentication/screens/google.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/get_navigation.dart';
@@ -26,7 +27,9 @@ class LoginFooterWidget extends StatelessWidget {
               child: OutlinedButton.icon(
                 icon: const Image(
                     image: AssetImage(tSignInWithGoogle), width: 20.0),
-                onPressed: () {},
+                onPressed: () {
+                  () => AuthService().signInWithGoogle();
+                },
                 label: const Text(LoginWithGoogle),
               ),
             ),

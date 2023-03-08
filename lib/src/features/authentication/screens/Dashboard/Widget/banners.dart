@@ -35,7 +35,10 @@ class dashboardbanners extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: const [
                     Flexible(child: Image(image: AssetImage(tBookmarkIcon))),
-                    Flexible(child: Image(image: AssetImage(tBannerImage1))),
+                    Flexible(
+                        child: Image(
+                            image: AssetImage(
+                                "assests/images/dashboard/dash-01.png"))),
                   ],
                 ),
                 const SizedBox(height: 25),
