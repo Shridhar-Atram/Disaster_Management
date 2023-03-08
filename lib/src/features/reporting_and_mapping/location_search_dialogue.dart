@@ -19,6 +19,7 @@ class LocationSearchDialog extends StatelessWidget {
     final TextEditingController _controller = TextEditingController();
 
     return Scaffold(
+      backgroundColor: Colors.green[50],
       body: Container(
         margin: EdgeInsets.only(top: 150),
         padding: EdgeInsets.all(5),
@@ -36,8 +37,7 @@ class LocationSearchDialog extends StatelessWidget {
                   keyboardType: TextInputType.streetAddress,
                   decoration: InputDecoration(
                     hintText: 'search_location',
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
+                    border: const OutlineInputBorder(
                       borderSide: BorderSide(
                         style: BorderStyle.none,
                         width: 0,
@@ -49,7 +49,10 @@ class LocationSearchDialog extends StatelessWidget {
                           color: Theme.of(context).disabledColor,
                         ),
                     filled: true,
-                    fillColor: Theme.of(context).focusColor,
+                    fillColor: Colors.green[300],
+                    focusedBorder: const OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.green),
+                    ),
                   ),
                   style: Theme.of(context).textTheme.headline2?.copyWith(
                         color: Theme.of(context).textTheme.bodyText1?.color,

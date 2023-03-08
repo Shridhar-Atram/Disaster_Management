@@ -53,6 +53,7 @@ dependencies:
   cloud_firestore: ^4.4.3
   google_sign_in: ^6.0.2
   fluttertoast: ^8.2.1
+  provider: ^6.0.5
 
 dev_dependencies:
   flutter_test:

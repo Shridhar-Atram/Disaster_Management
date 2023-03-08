@@ -49,7 +49,9 @@ class _ReportDisasterPageState extends State<ReportDisasterPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Report Disaster'),
+        backgroundColor: Colors.green,
       ),
+      backgroundColor: Colors.green[50],
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -57,14 +59,18 @@ class _ReportDisasterPageState extends State<ReportDisasterPage> {
           children: [
             Text(
               'Report a disaster',
-              style: Theme.of(context).textTheme.headline6,
+              style: TextStyle(
+                fontSize: 24.0,
+                fontWeight: FontWeight.bold,
+                color: Colors.green[800],
+              ),
             ),
             const SizedBox(height: 16.0),
             TextField(
               controller: _controller,
               decoration: InputDecoration(
                 border: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.black),
+                  borderSide: BorderSide(color: Colors.green[800]!),
                   borderRadius: BorderRadius.circular(5.0),
                 ),
                 hintText: 'Select Addrress',
@@ -95,6 +101,15 @@ class _ReportDisasterPageState extends State<ReportDisasterPage> {
                   decoration: InputDecoration(
                     labelText: 'Type of Disaster',
                     border: OutlineInputBorder(),
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.green[800]!),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.green[800]!),
+                    ),
+                    labelStyle: TextStyle(
+                      color: Colors.green[800],
+                    ),
                   ),
                   child: DropdownButtonHideUnderline(
                     child: DropdownButton<String>(
@@ -125,6 +140,15 @@ class _ReportDisasterPageState extends State<ReportDisasterPage> {
                   decoration: InputDecoration(
                     labelText: 'Current Status',
                     border: OutlineInputBorder(),
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.green[800]!),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.green[800]!),
+                    ),
+                    labelStyle: TextStyle(
+                      color: Colors.green[800],
+                    ),
                   ),
                   child: DropdownButtonHideUnderline(
                     child: DropdownButton<String>(
@@ -165,7 +189,15 @@ class _ReportDisasterPageState extends State<ReportDisasterPage> {
                             )),
                     (route) => false);
               },
-              child: Text('Report Disaster'),
+              style: ElevatedButton.styleFrom(
+                primary: Colors.green[800],
+                padding: const EdgeInsets.all(16.0),
+                textStyle: const TextStyle(
+                  fontSize: 16.0,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              child: const Text('Report Disaster'),
             ),
           ],
         ),
