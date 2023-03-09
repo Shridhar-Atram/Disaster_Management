@@ -52,6 +52,11 @@ dependencies:
   line_awesome_flutter: ^2.0.0
   cloud_firestore: ^4.4.3
   provider: ^6.0.5
+  flutter_local_notifications: ^8.2.0
+  firebase_messaging: ^14.2.5
+  firebase_analytics: ^10.1.5
+  multi_image_picker: ^4.8.01
+  modal_progress_hud_nsn: ^0.3.0
 
 dev_dependencies:
   flutter_test:
