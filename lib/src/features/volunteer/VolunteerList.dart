@@ -10,14 +10,14 @@ class Volunteer {
   Volunteer(this.id, this.name, this.cnumber, this.district);
 }
 
-class DisasterList extends StatefulWidget {
-  DisasterList({Key? key}) : super(key: key);
+class VolunteerList extends StatefulWidget {
+ VolunteerList({Key? key}) : super(key: key);
 
   @override
-  State<DisasterList> createState() => _DisasterListState();
+  State<VolunteerList> createState() => _VolunteerListState();
 }
 
-class _DisasterListState extends State<DisasterList> {
+class _VolunteerListState extends State<VolunteerList> {
   List volunteers = [
     Volunteer(1, "Shruti", "1234567890", "Pune"),
     Volunteer(2, "Shrutika", "1234567890", "Nashik"),

@@ -5,6 +5,7 @@ import 'package:disaster_management/src/constants/colors.dart';
 import 'package:disaster_management/src/constants/sizes.dart';
 import 'package:disaster_management/src/features/authentication/screens/SignUP/sign_up.dart';
 import 'package:disaster_management/src/features/authentication/screens/login/login_Screen.dart';
+import 'package:disaster_management/src/features/volunteer/DisasterList.dart';
 import 'package:disaster_management/src/features/volunteer/VolunteerReg.dart';
 import 'package:flutter/material.dart';
 
@@ -79,7 +80,7 @@ class WelcomeScreen extends StatelessWidget {
                         const SizedBox(width: 10.0),
                         Expanded(
                           child: ElevatedButton(
-                            onPressed: () => Get.to(() => const VolunteerReg()),
+                            onPressed: () => Get.to(() =>  VolunteerReg()),
                             child: Text('Volunteer Registration'),
                           ),
                         ),
@@ -136,6 +137,18 @@ class WelcomeScreen extends StatelessWidget {
                 Navigator.of(context).push(
                   MaterialPageRoute(
                     builder: (context) => GoogleMapScreen(),
+                  ),
+                );
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.warning),
+              title: const Text("Disasters Reported"),
+              onTap: () {
+                Navigator.of(context).pop();
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => DisasterList(),
                   ),
                 );
               },

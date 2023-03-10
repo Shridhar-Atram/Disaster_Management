@@ -1,5 +1,5 @@
 const String tAppName = ".appable/";
-const String tAppTagLine = "No one has ever become\ncls poor by giving.";
+const String tAppTagLine = "No one has ever become \n cls poor by giving.";
 const String tLogin = "Login";
 const String tSignup = "Signup";
 //welcome screen Text
@@ -48,12 +48,12 @@ const String totpMessage = "Enter the verification code sent at ";
 const String tProfile = "Profile";
 const String tEditProfile = 'Edit Profile';
 const String tLogoutDialogHeading = "Logout";
-const String tProfileHeading = "Coding with T";
+const String tProfileHeading = "Here I am";
 const String tProfileSubHeading = "Shridharatram555@gmail.com";
 
 //-menu
 //const String tMenu5 = tLogout;
-const String tMenu1 = "Settings";
+const String tMenu1 = "Report a Disastor";
 const String tMenu4 = "Information";
 const String tMenu2 = "Billing Details";
 const String tMenu3 = "User Management";

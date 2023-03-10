@@ -12,9 +12,11 @@ class LoginForm extends StatelessWidget {
   const LoginForm({
     Key? key,
   }) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
+    final TextEditingController emailController = new TextEditingController();
+    final TextEditingController passwordController =
+        new TextEditingController();
     return Form(
       child: Container(
         padding: const EdgeInsets.symmetric(vertical: tFormHeight),
@@ -22,6 +24,24 @@ class LoginForm extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             TextFormField(
+              autofocus: false,
+              controller: emailController,
+              keyboardType: TextInputType.emailAddress,
+              validator: (value) {
+                if (value!.isEmpty) {
+                  return ("Please Enter Your Email");
+                }
+                // reg expression for email validation
+                if (!RegExp("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+.[a-z]")
+                    .hasMatch(value)) {
+                  return ("Please Enter a valid email");
+                }
+                return null;
+              },
+              onSaved: (value) {
+                emailController.text = value!;
+              },
+              textInputAction: TextInputAction.next,
               decoration: const InputDecoration(
                   prefixIcon: Icon(Icons.person_outline_outlined),
                   labelText: tEmail,
