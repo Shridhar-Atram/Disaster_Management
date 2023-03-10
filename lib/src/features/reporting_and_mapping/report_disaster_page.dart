@@ -28,6 +28,7 @@ class ReportDisasterPage extends StatefulWidget {
 class _ReportDisasterPageState extends State<ReportDisasterPage> {
   String _selectedDisasterType = 'Earthquake';
   String _selectedArea = '';
+  String _selectedDistrict = '';
   String _currentStatus = 'Ongoing';
   final TextEditingController _controller = TextEditingController();
   bool showSpinner = false;
@@ -160,6 +161,8 @@ class _ReportDisasterPageState extends State<ReportDisasterPage> {
                           _controller.text =
                               "${placemarks[0].locality}, ${placemarks[0].administrativeArea}, ${placemarks[0].country}";
                           _selectedArea = _controller.text;
+                          _selectedDistrict =
+                              placemarks[0].subAdministrativeArea!;
                         },
                       );
                     }
@@ -319,16 +322,18 @@ class _ReportDisasterPageState extends State<ReportDisasterPage> {
                       _selectedArea,
                       _selectedDisasterType,
                       _currentStatus,
+                      _selectedDistrict,
+                      imagesList,
                     );
-                    DocumentSnapshot snap = await FirebaseFirestore.instance
-                        .collection("usersToken")
-                        .doc("Shridhar Atram")
-                        .get();
-                    String token = snap["fcmToken"];
-                    print("Token from firebase $token");
+                    // DocumentSnapshot snap = await FirebaseFirestore.instance
+                    //     .collection("usersToken")
+                    //     .doc("Shridhar Atram")
+                    //     .get();
+                    // String token = snap["fcmToken"];
+                    // print("Token from firebase $token");
 
-                    NotificationService()
-                        .sendPushMessage(token, "Testing", "Testing body");
+                    // NotificationService()
+                    //     .sendPushMessage(token, "Testing", "Testing body");
 
                     Navigator.of(context).pushAndRemoveUntil(
                         MaterialPageRoute(

@@ -57,6 +57,9 @@ dependencies:
   firebase_analytics: ^10.1.5
   multi_image_picker: ^4.8.01
   modal_progress_hud_nsn: ^0.3.0
+  firebase_storage: ^11.0.15
+  flutter_native_image: ^0.0.6+1
+  path_provider: ^2.0.13
 
 dev_dependencies:
   flutter_test:
