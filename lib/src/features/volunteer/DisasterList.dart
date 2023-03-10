@@ -1,8 +1,11 @@
+import 'package:disaster_management/src/features/volunteer/VolunteerReg.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+
+import 'FinancialHelp.dart';
 
 class DisasterList extends StatelessWidget {
   DisasterList({Key? key}) : super(key: key) {
@@ -17,14 +20,13 @@ class DisasterList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-         backgroundColor: Color.fromARGB(255, 168, 220, 167),
+      backgroundColor: Color.fromARGB(255, 168, 220, 167),
       appBar: AppBar(
-        title: Text("Disasters Reported"),backgroundColor: Colors.green[800]! ,
+        title: Text("Disasters Reported"),
+        backgroundColor: Colors.green[800]!,
       ),
       body: Container(
-        decoration: BoxDecoration(
-         
-        ),
+        decoration: BoxDecoration(),
         child: StreamBuilder<QuerySnapshot>(
           stream: _stream,
           builder: (BuildContext context, AsyncSnapshot snapshot) {
@@ -43,23 +45,24 @@ class DisasterList extends StatelessWidget {
                         'area': e['area'],
                         'currentStatus': e['currentStatus'],
                         'disasterType': e['disasterType'],
-                        'district': e['district'],
+                       // 'district':,
                       })
                   .toList();
 
               return Container(
                 child: ListView.builder(
-                    scrollDirection: Axis.vertical,
-                    itemCount: items.length,
-                    shrinkWrap: true,
-                    itemBuilder: (context, i) {
-                   //   final sortedDis = items
-                 // ..sort((item1, item2) =>
-                   //   item1.district.compareTo(item2.district));
-              //  Map disaster = sortedDis[i];
-                      Map thisItem = items[i];
-                      return FinalDisaster(thisItem['id']);
-                    }),
+                  scrollDirection: Axis.vertical,
+                  itemCount: items.length,
+                  shrinkWrap: true,
+                  itemBuilder: (context, i) {
+                      // final sortedDis = items
+                    // ..sort((item1, item2) =>
+                     //  item1.district.compareTo(item2.district));
+                     // Map disaster = sortedDis[i];
+                    Map thisItem = items[i];
+                    return FinalDisaster(thisItem['id']);
+                  },
+                ),
               );
             }
 
@@ -147,55 +150,67 @@ class FinalDisaster extends StatelessWidget {
                 width: MediaQuery.of(context).size.width,
                 padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 8.0),
                 margin: EdgeInsets.symmetric(horizontal: 7.0, vertical: 3.0),
-                child: Card(
-                    elevation: 5.0,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(4.0),
-                    ),
-                    child: Container(
-                        width: MediaQuery.of(context).size.width,
-                        padding: EdgeInsets.symmetric(
-                            horizontal: 20.0, vertical: 10.0),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Container(
-                                  padding: EdgeInsets.symmetric(
-                                      horizontal: 4.0, vertical: 4.0),
-                                  margin: EdgeInsets.symmetric(
-                                      horizontal: 3.0, vertical: 3.0),
-                                  child: Text('${data['disasterType']}',
+                child: InkWell(
+                  child: Card(
+                      elevation: 5.0,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(4.0),
+                      ),
+                      child: Container(
+                          width: MediaQuery.of(context).size.width,
+                          padding: EdgeInsets.symmetric(
+                              horizontal: 20.0, vertical: 10.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Column(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Container(
+                                    padding: EdgeInsets.symmetric(
+                                        horizontal: 4.0, vertical: 4.0),
+                                    margin: EdgeInsets.symmetric(
+                                        horizontal: 3.0, vertical: 3.0),
+                                    child: Text('${data['disasterType']}',
+                                        style: TextStyle(
+                                            fontSize: 18.0,
+                                            fontWeight: FontWeight.bold,
+                                            color: Color.fromARGB(
+                                                255, 195, 17, 4))),
+                                  ),
+                                  // SizedBox(height: 5.0),
+                                  updateStatus(),
+                                ],
+                              ),
+                              SizedBox(width: 15.0),
+                              Container(
+                                  child: Row(
+                                children: [
+                                  Icon(Icons.location_on,
+                                      color: Color.fromARGB(255, 75, 77, 76)),
+                                  SizedBox(width: 5.0),
+                                  Text('${data['district']}',
                                       style: TextStyle(
-                                          fontSize: 18.0,
-                                          fontWeight: FontWeight.bold,
-                                          color: Color.fromARGB(255, 195, 17, 4))),
-                                ),
-                                // SizedBox(height: 5.0),
-                                updateStatus(),
-                              ],
-                            ),
-                            SizedBox(width: 15.0),
-                            Container(
-                                child: Row(
-                              children: [
-                                Icon(Icons.location_on,
-                                    color: Color.fromARGB(255, 75, 77, 76)),
-                                SizedBox(width: 5.0),
-                                Text("District",
-                                    style: TextStyle(
-                                      fontSize: 15.0,
-                                      fontWeight: FontWeight.bold,
-                                      // color: Color.fromARGB(153, 23, 1, 1),
-                                    )),
-                              ],
-                            ))
-                          ],
-                        ))));
+                                        fontSize: 15.0,
+                                        fontWeight: FontWeight.bold,
+                                        // color: Color.fromARGB(153, 23, 1, 1),
+                                      )),
+                                ],
+                              ))
+                            ],
+                          ))),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => FinancialHelp(),
+                      ),
+                    );
+                  },
+                ));
           }
           return Center(child: CircularProgressIndicator());
         });
