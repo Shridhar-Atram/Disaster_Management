@@ -56,6 +56,9 @@ dependencies:
   google_sign_in: ^6.0.2
   fluttertoast: ^8.2.1
   provider: ^6.0.5
+<<<<<<< HEAD
+  carousel_slider: ^4.2.1
+=======
   flutter_local_notifications: ^8.2.0
   firebase_analytics: ^10.1.5
   multi_image_picker: ^4.8.01
@@ -65,6 +68,7 @@ dependencies:
   path_provider: ^2.0.13
   firebase_messaging: ^14.2.6
 
+>>>>>>> 2c53e87ef149296eb5834978e1bdfdd3dd40258e
 
 dev_dependencies:
   flutter_test:
