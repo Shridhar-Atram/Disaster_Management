@@ -317,6 +317,9 @@ class _ReportDisasterPageState extends State<ReportDisasterPage> {
                 const SizedBox(height: 16.0),
                 ElevatedButton(
                   onPressed: () async {
+                    setState(() {
+                      showSpinner = true;
+                    });
                     await FirestoreService().reportDisaster(
                       context,
                       _selectedArea,
@@ -352,7 +355,12 @@ class _ReportDisasterPageState extends State<ReportDisasterPage> {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  child: const Text('Report Disaster'),
+                  child: showSpinner
+                      ? const CircularProgressIndicator(
+                          color: Colors.white,
+                          strokeWidth: 4,
+                        )
+                      : const Text('Report Disaster'),
                 ),
               ],
             ),
