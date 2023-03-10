@@ -14,7 +14,6 @@ class NetworkUtilities {
       {Map<String, String>? headers}) async {
     try {
       final response = await http.get(uri, headers: headers);
-      print(response.body);
       if (response.statusCode == 200) {
         return response;
       } else {
@@ -69,7 +68,6 @@ class LocationController extends GetxController {
     if (text != null && text.isNotEmpty) {
       http.Response? response = await LocationService().getLocationData(text);
       var data = jsonDecode(response!.body.toString());
-      print("my status is " + data["status"]);
       if (data['status'] == 'OK') {
         _predictionList = [];
         data['predictions'].forEach((prediction) =>
