@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-import 'FinancialHelp.dart';
 
+import 'Financialhelp1.dart';
 class DisasterList extends StatelessWidget {
   DisasterList({Key? key}) : super(key: key) {
     _stream = _reference.snapshots();
@@ -206,7 +206,7 @@ class FinalDisaster extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => FinancialHelp(),
+                        builder: (context) => const Financialhelp1(),
                       ),
                     );
                   },
