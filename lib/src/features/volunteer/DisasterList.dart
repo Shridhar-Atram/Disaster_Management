@@ -17,12 +17,13 @@ class DisasterList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+         backgroundColor: Color.fromARGB(255, 168, 220, 167),
       appBar: AppBar(
-        title: Text("Disasters Reported"),
+        title: Text("Disasters Reported"),backgroundColor: Colors.green[800]! ,
       ),
       body: Container(
         decoration: BoxDecoration(
-          color: Color.fromARGB(255, 109, 189, 106),
+         
         ),
         child: StreamBuilder<QuerySnapshot>(
           stream: _stream,
@@ -42,7 +43,7 @@ class DisasterList extends StatelessWidget {
                         'area': e['area'],
                         'currentStatus': e['currentStatus'],
                         'disasterType': e['disasterType'],
-                        'district': "Nashik",
+                        'district': e['district'],
                       })
                   .toList();
 
@@ -52,10 +53,10 @@ class DisasterList extends StatelessWidget {
                     itemCount: items.length,
                     shrinkWrap: true,
                     itemBuilder: (context, i) {
-                     // final sortedDis = items
+                   //   final sortedDis = items
                  // ..sort((item1, item2) =>
-                    //  item1.district.compareTo(item2.district));
-               // Map disaster = sortedDis[i];
+                   //   item1.district.compareTo(item2.district));
+              //  Map disaster = sortedDis[i];
                       Map thisItem = items[i];
                       return FinalDisaster(thisItem['id']);
                     }),
