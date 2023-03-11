@@ -1,7 +1,10 @@
 import 'package:disaster_management/src/features/authentication/screens/Dashboard/dashboard.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
-class DisasterReportedScreen extends StatelessWidget {
+class DisasterReportedScreen extends StatefulWidget {
   final String area;
   final String disasterType;
   final String currentStatus;
@@ -13,6 +16,11 @@ class DisasterReportedScreen extends StatelessWidget {
     required this.currentStatus,
   }) : super(key: key);
 
+  @override
+  State<DisasterReportedScreen> createState() => _DisasterReportedScreenState();
+}
+
+class _DisasterReportedScreenState extends State<DisasterReportedScreen> {
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
@@ -29,7 +37,7 @@ class DisasterReportedScreen extends StatelessWidget {
       child: Scaffold(
         backgroundColor: Colors.green.shade100,
         appBar: AppBar(
-          title: Text('Disaster Reported'),
+          title: const Text('Disaster Reported'),
           backgroundColor: Colors.green,
         ),
         body: Padding(
@@ -67,7 +75,7 @@ class DisasterReportedScreen extends StatelessWidget {
               ),
               const SizedBox(height: 10),
               Text(
-                area,
+                widget.area,
                 style: const TextStyle(
                   fontSize: 20,
                 ),
@@ -83,7 +91,7 @@ class DisasterReportedScreen extends StatelessWidget {
               ),
               const SizedBox(height: 10),
               Text(
-                disasterType,
+                widget.disasterType,
                 style: const TextStyle(
                   fontSize: 20,
                 ),
@@ -99,7 +107,7 @@ class DisasterReportedScreen extends StatelessWidget {
               ),
               const SizedBox(height: 10),
               Text(
-                currentStatus,
+                widget.currentStatus,
                 style: const TextStyle(
                   fontSize: 20,
                 ),
