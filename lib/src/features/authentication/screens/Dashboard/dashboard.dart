@@ -17,12 +17,14 @@ class Dashboard extends StatefulWidget {
 }
 
 class _DashboardState extends State<Dashboard> {
-  late int countIn;
+  late int countIn = 0;
 
   void getNoOfDisasters() async {
     await FirebaseFirestore.instance.collection("disasters").get().then(
       (value) {
-        countIn = value.docs.length;
+        setState(() {
+          countIn = value.docs.length;
+        });
       },
     );
   }
@@ -37,7 +39,7 @@ class _DashboardState extends State<Dashboard> {
     return Scaffold(
       appBar: const DashboardAppbar(),
       body: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
             gradient: LinearGradient(
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,

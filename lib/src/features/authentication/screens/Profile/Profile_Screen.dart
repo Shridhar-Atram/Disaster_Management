@@ -26,20 +26,26 @@ class ProfileSceen extends StatefulWidget {
 }
 
 class _ProfileSceenState extends State<ProfileSceen> {
-  User? user = FirebaseAuth.instance.currentUser;
+  User? user;
   UserModel loggedInUser = UserModel();
 
-  @override
-  void initState() {
-    super.initState();
-    FirebaseFirestore.instance
+  Future<void> getUser() async {
+    user = FirebaseAuth.instance.currentUser;
+    await FirebaseFirestore.instance
         .collection("users")
         .doc(user!.uid)
         .get()
         .then((value) {
-      this.loggedInUser = UserModel.fromMap(value.data());
-      setState(() {});
+      setState(() {
+        this.loggedInUser = UserModel.fromMap(value.data());
+      });
     });
+  }
+
+  @override
+  void initState() {
+    getUser();
+    super.initState();
   }
 
   @override
