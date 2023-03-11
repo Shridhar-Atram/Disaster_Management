@@ -1,5 +1,6 @@
 import 'package:disaster_management/firebase_options.dart';
-import 'package:disaster_management/src/features/authentication/screens/splash_Screen/splash_Screen.dart';
+import 'package:disaster_management/src/features/authentication/screens/login/login_form_widget.dart';
+//import 'package:disaster_management/src/features/authentication/screens/splash_Screen/splash_Screen.dart';
 import 'package:disaster_management/src/features/reporting_and_mapping/Providers/marker_provider.dart';
 import 'package:disaster_management/src/features/reporting_and_mapping/location_controller.dart';
 import 'package:disaster_management/src/features/reporting_and_mapping/location_search_dialogue.dart';
@@ -7,12 +8,14 @@ import 'package:disaster_management/src/repository/authentication_repository/aut
 import 'package:disaster_management/src/utils/theme/theme.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 
-void main() {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform)
+  await ScreenUtil.ensureScreenSize();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform)
       .then((value) => Get.put(AuthenticationRepository()));
   runApp(const App());
 }
@@ -32,7 +35,7 @@ class App extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         defaultTransition: Transition.leftToRightWithFade,
         transitionDuration: const Duration(milliseconds: 500),
-        home: SplashScreen(),
+        home: LoginScreen1(),
         routes: {
           LocationSearchDialog.routeName: (context) => LocationSearchDialog(),
         },

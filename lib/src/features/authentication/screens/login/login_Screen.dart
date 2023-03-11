@@ -20,8 +20,8 @@ class LoginScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: const [
-                LoginHeaderWidget(),
-                LoginForm(),
+                // LoginHeaderWidget(),
+                LoginScreen1(),
                 LoginFooterWidget(),
               ],
             ),

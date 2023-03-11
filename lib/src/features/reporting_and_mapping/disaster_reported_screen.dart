@@ -1,4 +1,4 @@
-import 'package:disaster_management/src/features/authentication/screens/welcome/welcome_screen.dart';
+import 'package:disaster_management/src/features/authentication/screens/Dashboard/dashboard.dart';
 import 'package:flutter/material.dart';
 
 class DisasterReportedScreen extends StatelessWidget {
@@ -20,7 +20,7 @@ class DisasterReportedScreen extends StatelessWidget {
         // Perform custom action here
         Navigator.of(context).pushAndRemoveUntil(
           MaterialPageRoute(
-            builder: (context) => const WelcomeScreen(),
+            builder: (context) => Dashboard(),
           ),
           (route) => false,
         );
@@ -110,7 +110,7 @@ class DisasterReportedScreen extends StatelessWidget {
                   onPressed: () {
                     Navigator.of(context).pushAndRemoveUntil(
                       MaterialPageRoute(
-                        builder: (_) => WelcomeScreen(),
+                        builder: (_) => Dashboard(),
                       ),
                       (route) => false,
                     );

@@ -43,7 +43,7 @@ class FirestoreService {
       (querySnapshot) {
         querySnapshot.docs.forEach(
           (document) async {
-            // Get the data from the document
+            // Get the data from the documentxs
             final disasterType = document['disasterType'];
             final area = document['area'];
             final status = document['currentStatus'];

@@ -29,7 +29,7 @@ class OTPScreen extends StatelessWidget {
             Text(totpSubTitle.toUpperCase(),
                 style: Theme.of(context).textTheme.headline6),
             const SizedBox(height: 40.0),
-            const Text("$totpMessage shri", textAlign: TextAlign.center),
+            const Text("$totpMessage", textAlign: TextAlign.center),
             const SizedBox(height: 20.0),
             OtpTextField(
                 mainAxisAlignment: MainAxisAlignment.center,

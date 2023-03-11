@@ -1,7 +1,6 @@
 import 'package:disaster_management/src/features/authentication/models/user_model.dart';
 import 'package:disaster_management/src/repository/authentication_repository/authentication_repository.dart';
 import 'package:disaster_management/src/repository/user_repository/user_repository.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -10,10 +9,11 @@ import '../screens/forget_password/forget_password_otp/otp_screen.dart';
 class SignUpController extends GetxController {
   static SignUpController get instance => Get.find();
   final email = TextEditingController();
-  final password = TextEditingController();
+  final passwordEditingController = TextEditingController();
   final fullName = TextEditingController();
   final phoneNo = TextEditingController();
   final UserRepo = Get.put(UserRepository());
+  final confirmPasswordEditingController = TextEditingController();
 
   void registerUser(String email, String password) {
     String? error = AuthenticationRepository.instance

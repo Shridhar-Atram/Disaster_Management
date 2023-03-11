@@ -1,10 +1,12 @@
-import 'package:disaster_management/src/features/authentication/screens/welcome/welcome_screen.dart';
+//import 'package:disaster_management/src/features/authentication/screens/welcome/welcome_screen.dart';
 import 'package:disaster_management/src/repository/authentication_repository/exceptions/signup_email_password_failure.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 
+//import '../../features/DashboardNew/Screens/homescreen.dart';
 import '../../features/authentication/screens/Dashboard/dashboard.dart';
+import '../../features/authentication/screens/login/login_form_widget.dart';
 
 class AuthenticationRepository extends GetxController {
   static AuthenticationRepository get instance => Get.find();
@@ -22,7 +24,7 @@ class AuthenticationRepository extends GetxController {
 
   _setIntialScreen(User? user) {
     user == null
-        ? Get.offAll(() => const WelcomeScreen())
+        ? Get.offAll(() => LoginScreen1())
         : Get.offAll(() => Dashboard());
   }
 
@@ -33,7 +35,7 @@ class AuthenticationRepository extends GetxController {
           email: email, password: password);
       firebaseUser.value != null
           ? Get.offAll(() => Dashboard())
-          : Get.to(() => WelcomeScreen());
+          : Get.to(() => LoginScreen1());
     } on FirebaseAuthException catch (e) {
       final ex = SignUpWithEmailAndPasswordFailure.code(e.code);
       print('Firebase auth exception - ${ex.message}');

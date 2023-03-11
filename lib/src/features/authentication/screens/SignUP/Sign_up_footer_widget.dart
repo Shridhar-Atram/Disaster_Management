@@ -7,11 +7,18 @@ import 'package:get/get_core/src/get_main.dart';
 
 import '../login/login_Screen.dart';
 
-class SignUpFooterWidget extends StatelessWidget {
+class SignUpFooterWidget extends StatefulWidget {
   const SignUpFooterWidget({
     Key? key,
   }) : super(key: key);
 
+  @override
+  State<StatefulWidget> createState() {
+    return SignUpFooterWidgetState();
+  }
+}
+
+class SignUpFooterWidgetState extends State<SignUpFooterWidget> {
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -29,7 +36,9 @@ class SignUpFooterWidget extends StatelessWidget {
           ),
         ),
         TextButton(
-          onPressed: () => Get.to(() => const LoginScreen()),
+          onPressed: () {
+            Get.to(() => LoginScreen1());
+          },
           child: Text.rich(TextSpan(children: [
             TextSpan(
               text: tAlreadyHaveAnAccount,

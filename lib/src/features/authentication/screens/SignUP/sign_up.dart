@@ -3,7 +3,7 @@ import 'package:disaster_management/src/constants/sizes.dart';
 import 'package:disaster_management/src/constants/text_strings.dart';
 import 'package:disaster_management/src/features/authentication/screens/SignUP/Form_header_widget.dart';
 import 'package:disaster_management/src/features/authentication/screens/SignUP/Sign_up_footer_widget.dart';
-import 'package:disaster_management/src/features/authentication/screens/SignUP/Sign_up_form_widget.dart';
+import 'package:disaster_management/src/features/authentication/screens/SignUP/SignUP.dart';
 import 'package:flutter/material.dart';
 
 class SignUpScreen extends StatelessWidget {
@@ -24,7 +24,7 @@ class SignUpScreen extends StatelessWidget {
                   subTitle: tSignUpSubTitle,
                   imageHeight: 0.15,
                 ),
-                SignUpFormWidget(),
+                //RegistrationScreen1(),
                 SignUpFooterWidget(),
               ],
             ),

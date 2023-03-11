@@ -1,21 +1,46 @@
-import 'package:disaster_management/src/constants/colors.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:disaster_management/src/constants/image_strings.dart';
 import 'package:disaster_management/src/constants/sizes.dart';
 import 'package:disaster_management/src/constants/text_strings.dart';
+//import 'package:disaster_management/src/features/DashboardNew/Screens/homescreen.dart';
 import 'package:disaster_management/src/features/authentication/screens/Dashboard/dashboard.dart';
 import 'package:disaster_management/src/features/authentication/screens/Profile/update_profile_screen.dart';
 import 'package:disaster_management/src/features/authentication/screens/Profile/widget/profile_menu.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 
+import '../../../../constants/colors.dart';
 import '../../../reporting_and_mapping/google_map_screen.dart';
 import '../../../reporting_and_mapping/report_disaster_page.dart';
+import '../../../volunteer/VolunteerReg.dart';
+import '../model/userModel.dart';
+//import '../../models/user_model.dart';
 
-class ProfileSceen extends StatelessWidget {
-  const ProfileSceen({Key? key}) : super(key: key);
+class ProfileSceen extends StatefulWidget {
+  const ProfileSceen({super.key});
+
+  @override
+  State<ProfileSceen> createState() => _ProfileSceenState();
+}
+
+class _ProfileSceenState extends State<ProfileSceen> {
+  User? user = FirebaseAuth.instance.currentUser;
+  UserModel loggedInUser = UserModel();
+
+  @override
+  void initState() {
+    super.initState();
+    FirebaseFirestore.instance
+        .collection("users")
+        .doc(user!.uid)
+        .get()
+        .then((value) {
+      this.loggedInUser = UserModel.fromMap(value.data());
+      setState(() {});
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -72,12 +97,16 @@ class ProfileSceen extends StatelessWidget {
                 ],
               ),
               const SizedBox(height: 10),
-              Text(
-                tProfileHeading,
-                style: Theme.of(context).textTheme.headline4,
-              ),
-              Text(tProfileSubHeading,
-                  style: Theme.of(context).textTheme.bodyText2),
+              Text("${loggedInUser.firstName} ${loggedInUser.secondName}",
+                  style: TextStyle(
+                    color: Colors.black54,
+                    fontWeight: FontWeight.w500,
+                  )),
+              Text("${loggedInUser.email}",
+                  style: TextStyle(
+                    color: Colors.black54,
+                    fontWeight: FontWeight.w500,
+                  )),
               const SizedBox(height: 20),
               SizedBox(
                   width: 200,
@@ -123,7 +152,7 @@ class ProfileSceen extends StatelessWidget {
                 endIcon: false,
               ),
               ProfileMenu(
-                title: 'Upcoming',
+                title: 'soon',
                 icon: LineAwesomeIcons.cog,
                 onPress: () {},
                 endIcon: false,
@@ -131,16 +160,25 @@ class ProfileSceen extends StatelessWidget {
               const Divider(color: Colors.grey),
               const SizedBox(height: 10),
               ProfileMenu(
-                title: 'Upcoming',
+                title: 'Volunter Registration',
                 icon: LineAwesomeIcons.cog,
-                onPress: () {},
+                onPress: () {
+                  Navigator.of(context).pop();
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => VolunteerReg(),
+                    ),
+                  );
+                },
                 endIcon: false,
               ),
               ProfileMenu(
                 title: 'Logout',
                 textColor: Colors.red,
                 icon: LineAwesomeIcons.alternate_sign_out,
-                onPress: () {},
+                onPress: () {
+                  _signOut();
+                },
                 endIcon: false,
               ),
             ],
@@ -149,4 +187,8 @@ class ProfileSceen extends StatelessWidget {
       ),
     );
   }
+}
+
+Future<void> _signOut() async {
+  await FirebaseAuth.instance.signOut();
 }
