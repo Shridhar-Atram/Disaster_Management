@@ -97,7 +97,7 @@ class _LoginScreenState extends State<LoginScreen1> {
     final loginButton = Material(
       elevation: 5,
       borderRadius: BorderRadius.circular(30),
-      color: Colors.redAccent,
+      color: Colors.green,
       child: MaterialButton(
           padding: EdgeInsets.fromLTRB(20, 15, 20, 15),
           minWidth: MediaQuery.of(context).size.width,
@@ -114,11 +114,11 @@ class _LoginScreenState extends State<LoginScreen1> {
     );
 
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Color.fromARGB(255, 223, 245, 206),
       body: Center(
         child: SingleChildScrollView(
           child: Container(
-            color: Colors.white,
+            color: Color.fromARGB(255, 223, 245, 206),
             child: Padding(
               padding: const EdgeInsets.all(36.0),
               child: Form(
@@ -155,7 +155,7 @@ class _LoginScreenState extends State<LoginScreen1> {
                             child: Text(
                               "SignUp",
                               style: TextStyle(
-                                  color: Colors.redAccent,
+                                  color: Colors.green,
                                   fontWeight: FontWeight.bold,
                                   fontSize: 15),
                             ),

@@ -5,15 +5,14 @@ import 'package:disaster_management/src/features/authentication/screens/SignUP/s
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_instance/get_instance.dart';
 
 import '../../../../constants/text_strings.dart';
-//import '../../../DashboardNew/Screens/homescreen.dart';
 import '../../controllers/signup_controller.dart';
+import '../login/login_form_widget.dart';
 import '../model/userModel.dart';
-
-//import '../../models/user_model.dart';
 
 class RegistrationScreen1 extends StatefulWidget {
   const RegistrationScreen1({Key? key}) : super(key: key);
@@ -196,7 +195,7 @@ class _RegistrationScreenState extends State<RegistrationScreen1> {
     final signUpButton = Material(
       elevation: 5,
       borderRadius: BorderRadius.circular(30),
-      color: Colors.redAccent,
+      color: Colors.green,
       child: MaterialButton(
           padding: EdgeInsets.fromLTRB(20, 15, 20, 15),
           minWidth: MediaQuery.of(context).size.width,
@@ -212,12 +211,12 @@ class _RegistrationScreenState extends State<RegistrationScreen1> {
     );
 
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Color.fromARGB(255, 223, 245, 206),
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
         leading: IconButton(
-          icon: Icon(Icons.arrow_back, color: Colors.red),
+          icon: Icon(Icons.arrow_back, color: Colors.green),
           onPressed: () {
             // passing this to our root
             Navigator.of(context).pop();
@@ -227,7 +226,7 @@ class _RegistrationScreenState extends State<RegistrationScreen1> {
       body: Center(
         child: SingleChildScrollView(
           child: Container(
-            color: Colors.white,
+            color: const Color.fromARGB(255, 223, 245, 206),
             child: Padding(
               padding: const EdgeInsets.all(36.0),
               child: Form(
@@ -259,6 +258,23 @@ class _RegistrationScreenState extends State<RegistrationScreen1> {
                     SizedBox(height: 20),
                     signUpButton,
                     SizedBox(height: 15),
+                    Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Text("Already have an account? "),
+                          GestureDetector(
+                            onTap: () {
+                              Get.to(() => const LoginScreen1());
+                            },
+                            child: Text(
+                              "Login",
+                              style: TextStyle(
+                                  color: Colors.green,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 15),
+                            ),
+                          )
+                        ]),
                   ],
                 ),
               ),
