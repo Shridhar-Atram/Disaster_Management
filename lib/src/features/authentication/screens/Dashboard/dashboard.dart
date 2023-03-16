@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:disaster_management/src/features/authentication/screens/Dashboard/MyHeaderDrawer.dart';
+import 'package:disaster_management/src/features/volunteer/DisasterList.dart';
 import 'package:disaster_management/src/features/volunteer/VolunteerReg.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -251,7 +252,7 @@ class _DashboardState extends State<Dashboard> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: ((context) => ReportDisasterPage())));
+                                builder: ((context) => DisasterList())));
                       },
                       child: Container(
                         decoration: BoxDecoration(
@@ -277,7 +278,7 @@ class _DashboardState extends State<Dashboard> {
                                         size: 100, color: Colors.grey),
                                   ),
                                   Text(
-                                    'Report A disastor',
+                                    'Disasters Reported',
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
                                         color: Colors.black,
