@@ -69,7 +69,7 @@ class _DashboardState extends State<Dashboard> {
         title: const Text(
           'Diseastor  Management',
         ),
-        backgroundColor: Color.fromARGB(255, 159, 201, 126),
+        backgroundColor: Colors.green,
       ),
       drawer: Drawer(
         child: ListView(
@@ -109,296 +109,226 @@ class _DashboardState extends State<Dashboard> {
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
                 colors: [
-              Color.fromARGB(255, 249, 246, 246),
-              Color.fromARGB(255, 159, 201, 126),
+              Color.fromARGB(255, 218, 233, 215),
+              Colors.green,
             ])),
-        child: Center(
-            child: ListView(children: [
-          const SizedBox(height: 50),
-          Center(
-            child: Padding(
+        child: Column(
+          children: [
+            Padding(
               padding: const EdgeInsets.all(tDefaultSize - 10),
               child: Row(
                 children: <Widget>[
-                  const SizedBox(
-                    width: 20,
-                  ),
-                  Column(
-                    children: [
-                      const Text("Disastor Registered",
+                  Expanded(
+                    child: Column(
+                      children: [
+                        const Text(
+                          "Disaster Registered",
+                          textAlign: TextAlign.center,
                           style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 20.0)),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      CircularPercentIndicator(
-                        radius: 70.0,
-                        animation: true,
-                        animationDuration: 1200,
-                        lineWidth: 15.0,
-                        percent: 0.4,
-                        center: Text(
-                          "$countIn",
-                          style: const TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 50.0),
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20.0,
+                            color: Colors.black,
+                          ),
                         ),
-                        circularStrokeCap: CircularStrokeCap.butt,
-                        backgroundColor: Color.fromARGB(255, 214, 229, 207),
-                        progressColor: Color.fromARGB(255, 191, 222, 140),
-                      ),
-                    ],
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        CircularPercentIndicator(
+                          radius: 70.0,
+                          animation: true,
+                          animationDuration: 1200,
+                          lineWidth: 15.0,
+                          percent: 0.4,
+                          center: Text(
+                            "$countIn",
+                            style: const TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 50.0,
+                                color: Colors.black),
+                          ),
+                          circularStrokeCap: CircularStrokeCap.butt,
+                          backgroundColor: Color.fromARGB(255, 214, 229, 207),
+                          progressColor: Colors.green.shade400,
+                        ),
+                      ],
+                    ),
                   ),
                   const SizedBox(
                     width: 10,
                   ),
-                  Column(
-                    children: [
-                      Text("Volunter Registered",
-                          style: const TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 20.0)),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      Container(
-                        child: CircularPercentIndicator(
-                          radius: 70.0,
-                          animation: true,
-                          animationDuration: 1200,
-                          lineWidth: 15,
-                          percent: 0.4,
-                          center: Text(
-                            "$users",
+                  Expanded(
+                    child: Column(
+                      children: [
+                        Text("Volunteer Registered",
+                            textAlign: TextAlign.center,
                             style: const TextStyle(
-                                fontWeight: FontWeight.normal, fontSize: 50.0),
-                          ),
-                          circularStrokeCap: CircularStrokeCap.butt,
-                          backgroundColor: Color.fromARGB(255, 214, 229, 207),
-                          progressColor: Color.fromARGB(255, 191, 222, 140),
+                                fontWeight: FontWeight.bold,
+                                fontSize: 20.0,
+                                color: Colors.black)),
+                        const SizedBox(
+                          height: 10,
                         ),
-                      ),
-                    ],
+                        Container(
+                          child: CircularPercentIndicator(
+                            radius: 70.0,
+                            animation: true,
+                            animationDuration: 1200,
+                            lineWidth: 15,
+                            percent: 0.4,
+                            center: Text(
+                              "$users",
+                              style: const TextStyle(
+                                  fontWeight: FontWeight.normal,
+                                  fontSize: 50.0,
+                                  color: Colors.black),
+                            ),
+                            circularStrokeCap: CircularStrokeCap.butt,
+                            backgroundColor: Color.fromARGB(255, 214, 229, 207),
+                            progressColor: Colors.green.shade400,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ],
               ),
             ),
-          ),
-          const SizedBox(height: 50),
-          SafeArea(
-              child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: Column(
-              children: <Widget>[
-                const SizedBox(
-                  width: 80,
-                ),
-                Container(
-                  child: SafeArea(child: Row()),
-                ),
-                const SizedBox(
-                  width: double.infinity,
-                  height: 50,
-                ),
-                Row(
-                  children: [
-                    SizedBox(width: 20),
-                    InkWell(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: ((context) => ReportDisasterPage())));
-                      },
-                      child: Container(
-                        decoration: BoxDecoration(
-                            color: Color.fromARGB(255, 220, 241, 198),
-                            borderRadius: BorderRadius.circular(13),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Color.fromARGB(255, 159, 201, 126),
-                                offset: Offset(3.0, 3.0),
-                                blurRadius: 3.0,
-                              )
-                            ]),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Container(
-                              child: Column(
-                                children: [
-                                  SizedBox(
-                                    height: 150,
-                                    width: 150,
-                                    child: Icon(Icons.alarm,
-                                        size: 100, color: Colors.grey),
-                                  ),
-                                  Text(
-                                    'Report A disastor',
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                        color: Colors.black,
-                                        fontSize: 15,
-                                        fontWeight: FontWeight.bold),
-                                  )
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
+            Expanded(
+              child: GridView.count(
+                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+                primary: false,
+                crossAxisCount: 2,
+                children: [
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: ((context) => ReportDisasterPage())));
+                    },
+                    child: Card(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(
+                            Icons.report_problem_outlined,
+                            size: 70,
+                            color: Colors.grey,
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Text(
+                            'Report Disaster',
+                            style: TextStyle(
+                                fontWeight: FontWeight.w600,
+                                fontSize: 18,
+                                fontFamily: 'Montserrat'),
+                          )
+                        ],
                       ),
+                      color: Color.fromARGB(255, 220, 241, 198),
                     ),
-                    SizedBox(width: 60),
-                    InkWell(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: ((context) => DisasterList())));
-                      },
-                      child: Container(
-                        decoration: BoxDecoration(
-                            color: Color.fromARGB(255, 220, 241, 198),
-                            borderRadius: BorderRadius.circular(13),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Color.fromARGB(255, 159, 201, 126),
-                                offset: Offset(2.0, 2.0),
-                                blurRadius: 2.0,
-                              )
-                            ]),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Container(
-                              child: Column(
-                                children: [
-                                  SizedBox(
-                                    height: 150,
-                                    width: 150,
-                                    child: Icon(Icons.alarm,
-                                        size: 100, color: Colors.grey),
-                                  ),
-                                  Text(
-                                    'Disasters Reported',
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                        color: Colors.black,
-                                        fontSize: 15,
-                                        fontWeight: FontWeight.bold),
-                                  )
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: ((context) => DisasterList())));
+                    },
+                    child: Card(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(
+                            Icons.sync_problem_rounded,
+                            color: Colors.grey,
+                            size: 70,
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Text(
+                            'Disaster Reported',
+                            style: TextStyle(
+                                fontWeight: FontWeight.w600,
+                                fontSize: 18,
+                                fontFamily: 'Montserrat'),
+                          )
+                        ],
                       ),
-                    )
-                  ],
-                ),
-                SizedBox(
-                  height: 50,
-                ),
-                Row(
-                  children: [
-                    const SizedBox(
-                      width: 20,
+                      color: Color.fromARGB(255, 220, 241, 198),
                     ),
-                    InkWell(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: ((context) => VolunteerReg())));
-                      },
-                      child: Container(
-                        decoration: BoxDecoration(
-                            color: Color.fromARGB(255, 220, 241, 198),
-                            borderRadius: BorderRadius.circular(13),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Color.fromARGB(255, 159, 201, 126),
-                                offset: Offset(2.0, 2.0),
-                                blurRadius: 2.0,
-                              )
-                            ]),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Container(
-                              child: Column(
-                                children: [
-                                  SizedBox(
-                                    height: 150,
-                                    width: 150,
-                                    child: Icon(Icons.alarm,
-                                        size: 100, color: Colors.grey),
-                                  ),
-                                  Text(
-                                    'Volunter Registration',
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                        color: Colors.black,
-                                        fontSize: 15,
-                                        fontWeight: FontWeight.bold),
-                                  )
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: ((context) => VolunteerReg())));
+                    },
+                    child: Card(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(
+                            Icons.app_registration_sharp,
+                            size: 70,
+                            color: Colors.grey,
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Text(
+                            'Volunteer Registration',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                fontWeight: FontWeight.w600,
+                                fontSize: 18,
+                                fontFamily: 'Montserrat'),
+                          )
+                        ],
                       ),
+                      color: Color.fromARGB(255, 220, 241, 198),
                     ),
-                    const SizedBox(width: 60),
-                    InkWell(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: ((context) => GoogleMapScreen())));
-                      },
-                      child: Container(
-                        decoration: BoxDecoration(
-                            color: Color.fromARGB(255, 220, 241, 198),
-                            borderRadius: BorderRadius.circular(13),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Color.fromARGB(255, 159, 201, 126),
-                                offset: Offset(2.0, 2.0),
-                                blurRadius: 2.0,
-                              )
-                            ]),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Container(
-                              child: Column(
-                                children: [
-                                  SizedBox(
-                                    height: 150,
-                                    width: 150,
-                                    child: Icon(Icons.map_outlined,
-                                        size: 100, color: Colors.grey),
-                                  ),
-                                  Text(
-                                    'Maps',
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                        color: Colors.black,
-                                        fontSize: 15,
-                                        fontWeight: FontWeight.bold),
-                                  )
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: ((context) => GoogleMapScreen())));
+                    },
+                    child: Card(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(
+                            Icons.map_outlined,
+                            size: 70,
+                            color: Colors.grey,
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Text(
+                            'Maps',
+                            style: TextStyle(
+                                fontWeight: FontWeight.w600,
+                                fontSize: 18,
+                                fontFamily: 'Montserrat'),
+                          )
+                        ],
                       ),
+                      color: Color.fromARGB(255, 220, 241, 198),
                     ),
-                  ],
-                )
-              ],
+                  ),
+                ],
+              ),
             ),
-          ))
-        ])),
+          ],
+        ),
       ),
     );
   }
@@ -407,3 +337,9 @@ class _DashboardState extends State<Dashboard> {
 Future<void> _signOut() async {
   await FirebaseAuth.instance.signOut();
 }
+
+
+
+
+// ===================================================
+

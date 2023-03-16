@@ -37,7 +37,7 @@ class _GoogleMapScreenState extends State<GoogleMapScreen> {
           iconTheme: const IconThemeData(
             color: Colors.black54, // Change color here
           ),
-          backgroundColor: Colors.green[100],
+          backgroundColor: Colors.green,
           title: GestureDetector(
             child: Container(
               decoration: BoxDecoration(

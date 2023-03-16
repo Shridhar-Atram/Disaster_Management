@@ -5,8 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-
-import 'Financialhelp1.dart';
 class DisasterList extends StatelessWidget {
   DisasterList({Key? key}) : super(key: key) {
     _stream = _reference.snapshots();
@@ -23,7 +21,7 @@ class DisasterList extends StatelessWidget {
       backgroundColor: Color.fromARGB(255, 168, 220, 167),
       appBar: AppBar(
         title: Text("Disasters Reported"),
-        backgroundColor: Colors.green[800]!,
+        backgroundColor: Colors.green,
       ),
       body: Container(
         decoration: BoxDecoration(),
@@ -45,7 +43,7 @@ class DisasterList extends StatelessWidget {
                         'area': e['area'],
                         'currentStatus': e['currentStatus'],
                         'disasterType': e['disasterType'],
-                      //  'district':e['district'],
+                        // 'district':,
                       })
                   .toList();
 
@@ -55,10 +53,10 @@ class DisasterList extends StatelessWidget {
                   itemCount: items.length,
                   shrinkWrap: true,
                   itemBuilder: (context, i) {
-                      // final sortedDis = items
+                    // final sortedDis = items
                     // ..sort((item1, item2) =>
-                     //  item1.district.compareTo(item2.district));
-                     // Map disaster = sortedDis[i];
+                    //  item1.district.compareTo(item2.district));
+                    // Map disaster = sortedDis[i];
                     Map thisItem = items[i];
                     return FinalDisaster(thisItem['id']);
                   },
@@ -203,12 +201,12 @@ class FinalDisaster extends StatelessWidget {
                             ],
                           ))),
                   onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const Financialhelp1(),
-                      ),
-                    );
+                    // Navigator.push(
+                    //   context,
+                    //   MaterialPageRoute(
+                    //     builder: (context) => const Financialhelp1(),
+                    //   ),
+                    // );
                   },
                 ));
           }

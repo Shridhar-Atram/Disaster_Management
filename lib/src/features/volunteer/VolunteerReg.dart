@@ -35,7 +35,10 @@ class _VolunteerRegState extends State<VolunteerReg> {
 
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Volunteers Registration'),backgroundColor: Colors.green[800]! ,),
+      appBar: AppBar(
+        title: Text('Volunteers Registration'),
+        backgroundColor: Colors.green,
+      ),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 1.2, vertical: 10.0),
         child: SingleChildScrollView(
@@ -48,26 +51,30 @@ class _VolunteerRegState extends State<VolunteerReg> {
               padding: EdgeInsets.all(1.0),
               child: TextFormField(
                 controller: _controllerName,
-                style: TextStyle(fontSize: 15.0, fontWeight: FontWeight.bold,color: Colors.green[800]! ),
+                style: TextStyle(
+                    fontSize: 15.0,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.green),
                 decoration: InputDecoration(
                   prefixIcon: Icon(Icons.person),
-                  prefixIconColor:Colors.green[800]! ,
+                  prefixIconColor: Colors.green,
                   contentPadding:
                       const EdgeInsets.only(left: 14.0, bottom: 2.0, top: 14.0),
                   hintText: 'Enter Your Name ',
                   focusColor: Color.fromARGB(255, 109, 189, 106),
-                 //  border: OutlineInputBorder(),
-                         border: InputBorder.none,
-                            filled: true,
-                            fillColor: Colors.grey[300],
-                          //  focusColor: Colors.grey,
-                            focusedBorder: OutlineInputBorder(
-                                borderSide: new BorderSide(color: Colors.green[800]! ),
-                                borderRadius: BorderRadius.circular(25.7)),
-                            enabledBorder: UnderlineInputBorder(
-                              borderSide: new BorderSide(color: Color.fromARGB(255, 237, 235, 235) ),
-                              borderRadius: new BorderRadius.circular(25.7),
-                            ),
+                  //  border: OutlineInputBorder(),
+                  border: InputBorder.none,
+                  filled: true,
+                  fillColor: Colors.grey[300],
+                  //  focusColor: Colors.grey,
+                  focusedBorder: OutlineInputBorder(
+                      borderSide: new BorderSide(color: Colors.green),
+                      borderRadius: BorderRadius.circular(25.7)),
+                  enabledBorder: UnderlineInputBorder(
+                    borderSide: new BorderSide(
+                        color: Color.fromARGB(255, 237, 235, 235)),
+                    borderRadius: new BorderRadius.circular(25.7),
+                  ),
                 ),
                 validator: (String? value) {
                   if (value == null || value.isEmpty) {
@@ -84,28 +91,29 @@ class _VolunteerRegState extends State<VolunteerReg> {
               child: TextFormField(
                 controller: _controllerCnumber,
                 style: TextStyle(
-                  fontSize: 15.0,
-                  fontWeight: FontWeight.bold,color: Colors.green[800]!
-                ),
+                    fontSize: 15.0,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.green),
                 decoration: InputDecoration(
                   prefixIcon: Icon(Icons.phone),
-                  prefixIconColor:Colors.green[800]! ,
+                  prefixIconColor: Colors.green,
                   contentPadding:
                       const EdgeInsets.only(left: 14.0, bottom: 2.0, top: 14.0),
                   hintText: 'Enter Your Contact No ',
-                 focusColor: Color.fromARGB(255, 109, 189, 106),
-                 //  border: OutlineInputBorder(),
-                         border: InputBorder.none,
-                            filled: true,
-                            fillColor: Colors.grey[300],
-                          //  focusColor: Colors.grey,
-                            focusedBorder: OutlineInputBorder(
-                                borderSide: new BorderSide(color: Colors.green[800]! ),
-                                borderRadius: BorderRadius.circular(25.7)),
-                            enabledBorder: UnderlineInputBorder(
-                              borderSide: new BorderSide(color: Color.fromARGB(255, 237, 235, 235) ),
-                              borderRadius: new BorderRadius.circular(25.7),
-                            ),
+                  focusColor: Color.fromARGB(255, 109, 189, 106),
+                  //  border: OutlineInputBorder(),
+                  border: InputBorder.none,
+                  filled: true,
+                  fillColor: Colors.grey[300],
+                  //  focusColor: Colors.grey,
+                  focusedBorder: OutlineInputBorder(
+                      borderSide: new BorderSide(color: Colors.green),
+                      borderRadius: BorderRadius.circular(25.7)),
+                  enabledBorder: UnderlineInputBorder(
+                    borderSide: new BorderSide(
+                        color: Color.fromARGB(255, 237, 235, 235)),
+                    borderRadius: new BorderRadius.circular(25.7),
+                  ),
                 ),
                 validator: (String? value) {
                   if (value == null || value.isEmpty) {
@@ -122,30 +130,31 @@ class _VolunteerRegState extends State<VolunteerReg> {
               child: TextFormField(
                 controller: _controllerState,
                 style: TextStyle(
-                  fontSize: 15.0,
-                  fontWeight: FontWeight.bold,color: Colors.green[800]!
-                ),
+                    fontSize: 15.0,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.green),
                 decoration: InputDecoration(
                   prefixIcon: Icon(
                     Icons.location_on_outlined,
                   ),
-                    prefixIconColor:Colors.green[800]! ,
+                  prefixIconColor: Colors.green,
                   contentPadding:
                       const EdgeInsets.only(left: 14.0, bottom: 2.0, top: 14.0),
                   hintText: 'Enter State ',
                   focusColor: Color.fromARGB(255, 109, 189, 106),
-                 //  border: OutlineInputBorder(),
-                         border: InputBorder.none,
-                            filled: true,
-                            fillColor: Colors.grey[300],
-                          //  focusColor: Colors.grey,
-                            focusedBorder: OutlineInputBorder(
-                                borderSide: new BorderSide(color: Colors.green[800]! ),
-                                borderRadius: BorderRadius.circular(25.7)),
-                            enabledBorder: UnderlineInputBorder(
-                              borderSide: new BorderSide(color: Color.fromARGB(255, 237, 235, 235) ),
-                              borderRadius: new BorderRadius.circular(25.7),
-                            ),
+                  //  border: OutlineInputBorder(),
+                  border: InputBorder.none,
+                  filled: true,
+                  fillColor: Colors.grey[300],
+                  //  focusColor: Colors.grey,
+                  focusedBorder: OutlineInputBorder(
+                      borderSide: new BorderSide(color: Colors.green),
+                      borderRadius: BorderRadius.circular(25.7)),
+                  enabledBorder: UnderlineInputBorder(
+                    borderSide: new BorderSide(
+                        color: Color.fromARGB(255, 237, 235, 235)),
+                    borderRadius: new BorderRadius.circular(25.7),
+                  ),
                 ),
                 validator: (String? value) {
                   if (value == null || value.isEmpty) {
@@ -162,30 +171,31 @@ class _VolunteerRegState extends State<VolunteerReg> {
               child: TextFormField(
                 controller: _controllerDistrict,
                 style: TextStyle(
-                  fontSize: 15.0,
-                  fontWeight: FontWeight.bold,color: Colors.green[800]!
-                ),
+                    fontSize: 15.0,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.green),
                 decoration: InputDecoration(
                   prefixIcon: Icon(
                     Icons.location_on_outlined,
                   ),
-                    prefixIconColor:Colors.green[800]! ,
+                  prefixIconColor: Colors.green,
                   contentPadding:
                       const EdgeInsets.only(left: 14.0, bottom: 2.0, top: 14.0),
                   hintText: 'Enter District ',
                   focusColor: Color.fromARGB(255, 109, 189, 106),
-                 //  border: OutlineInputBorder(),
-                         border: InputBorder.none,
-                            filled: true,
-                            fillColor: Colors.grey[300],
-                          //  focusColor: Colors.grey,
-                            focusedBorder: OutlineInputBorder(
-                                borderSide: new BorderSide(color: Colors.green[800]! ),
-                                borderRadius: BorderRadius.circular(25.7)),
-                            enabledBorder: UnderlineInputBorder(
-                              borderSide: new BorderSide(color: Color.fromARGB(255, 237, 235, 235) ),
-                              borderRadius: new BorderRadius.circular(25.7),
-                            ),
+                  //  border: OutlineInputBorder(),
+                  border: InputBorder.none,
+                  filled: true,
+                  fillColor: Colors.grey[300],
+                  //  focusColor: Colors.grey,
+                  focusedBorder: OutlineInputBorder(
+                      borderSide: new BorderSide(color: Colors.green),
+                      borderRadius: BorderRadius.circular(25.7)),
+                  enabledBorder: UnderlineInputBorder(
+                    borderSide: new BorderSide(
+                        color: Color.fromARGB(255, 237, 235, 235)),
+                    borderRadius: new BorderRadius.circular(25.7),
+                  ),
                 ),
                 validator: (String? value) {
                   if (value == null || value.isEmpty) {
@@ -202,30 +212,31 @@ class _VolunteerRegState extends State<VolunteerReg> {
               child: TextFormField(
                 controller: _controllerAddress,
                 style: TextStyle(
-                  fontSize: 15.0,
-                  fontWeight: FontWeight.bold,color: Colors.green[800]!
-                ),
+                    fontSize: 15.0,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.green),
                 decoration: InputDecoration(
                   prefixIcon: Icon(
                     Icons.location_on,
                   ),
-                    prefixIconColor:Colors.green[800]! ,
+                  prefixIconColor: Colors.green,
                   contentPadding:
                       const EdgeInsets.only(left: 14.0, bottom: 2.0, top: 14.0),
                   hintText: 'Enter your Address ',
                   focusColor: Color.fromARGB(255, 109, 189, 106),
-                 //  border: OutlineInputBorder(),
-                         border: InputBorder.none,
-                            filled: true,
-                            fillColor: Colors.grey[300],
-                          //  focusColor: Colors.grey,
-                            focusedBorder: OutlineInputBorder(
-                                borderSide: new BorderSide(color: Colors.green[800]! ),
-                                borderRadius: BorderRadius.circular(25.7)),
-                            enabledBorder: UnderlineInputBorder(
-                              borderSide: new BorderSide(color: Color.fromARGB(255, 237, 235, 235) ),
-                              borderRadius: new BorderRadius.circular(25.7),
-                            ),
+                  //  border: OutlineInputBorder(),
+                  border: InputBorder.none,
+                  filled: true,
+                  fillColor: Colors.grey[300],
+                  //  focusColor: Colors.grey,
+                  focusedBorder: OutlineInputBorder(
+                      borderSide: new BorderSide(color: Colors.green),
+                      borderRadius: BorderRadius.circular(25.7)),
+                  enabledBorder: UnderlineInputBorder(
+                    borderSide: new BorderSide(
+                        color: Color.fromARGB(255, 237, 235, 235)),
+                    borderRadius: new BorderRadius.circular(25.7),
+                  ),
                 ),
                 validator: (String? value) {
                   if (value == null || value.isEmpty) {
@@ -242,28 +253,29 @@ class _VolunteerRegState extends State<VolunteerReg> {
               child: TextFormField(
                 controller: _controllerInterests,
                 style: TextStyle(
-                  fontSize: 15.0,
-                  fontWeight: FontWeight.bold,color: Colors.green[800]!
-                ),
+                    fontSize: 15.0,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.green),
                 decoration: InputDecoration(
                   prefixIcon: Icon(Icons.handshake_sharp),
-                    prefixIconColor:Colors.green[800]! ,
+                  prefixIconColor: Colors.green,
                   contentPadding:
                       const EdgeInsets.only(left: 14.0, bottom: 2.0, top: 14.0),
                   hintText: 'Your interests to work in ',
                   focusColor: Color.fromARGB(255, 109, 189, 106),
-                 //  border: OutlineInputBorder(),
-                         border: InputBorder.none,
-                            filled: true,
-                            fillColor: Colors.grey[300],
-                          //  focusColor: Colors.grey,
-                            focusedBorder: OutlineInputBorder(
-                                borderSide: new BorderSide(color: Colors.green[800]! ),
-                                borderRadius: BorderRadius.circular(25.7)),
-                            enabledBorder: UnderlineInputBorder(
-                              borderSide: new BorderSide(color: Color.fromARGB(255, 237, 235, 235) ),
-                              borderRadius: new BorderRadius.circular(25.7),
-                            ),
+                  //  border: OutlineInputBorder(),
+                  border: InputBorder.none,
+                  filled: true,
+                  fillColor: Colors.grey[300],
+                  //  focusColor: Colors.grey,
+                  focusedBorder: OutlineInputBorder(
+                      borderSide: new BorderSide(color: Colors.green),
+                      borderRadius: BorderRadius.circular(25.7)),
+                  enabledBorder: UnderlineInputBorder(
+                    borderSide: new BorderSide(
+                        color: Color.fromARGB(255, 237, 235, 235)),
+                    borderRadius: new BorderRadius.circular(25.7),
+                  ),
                 ),
                 validator: (String? value) {
                   if (value == null || value.isEmpty) {
@@ -278,7 +290,7 @@ class _VolunteerRegState extends State<VolunteerReg> {
                 padding:
                     const EdgeInsets.symmetric(horizontal: 13, vertical: 3),
                 decoration: BoxDecoration(
-                    color: Colors.green[800]!,
+                    color: Colors.green,
                     borderRadius: BorderRadius.circular(30)),
                 child: InkWell(
                     child: const Padding(
