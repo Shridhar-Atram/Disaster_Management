@@ -146,8 +146,8 @@ class FinalDisaster extends StatelessWidget {
 
             return Container(
                 width: MediaQuery.of(context).size.width,
-                padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 8.0),
-                margin: EdgeInsets.symmetric(horizontal: 7.0, vertical: 3.0),
+                padding: EdgeInsets.symmetric(horizontal: 3.0, vertical: 8.0),
+                margin: EdgeInsets.symmetric(horizontal: 2.0, vertical: 3.0),
                 child: InkWell(
                   child: Card(
                       elevation: 5.0,
@@ -157,7 +157,7 @@ class FinalDisaster extends StatelessWidget {
                       child: Container(
                           width: MediaQuery.of(context).size.width,
                           padding: EdgeInsets.symmetric(
-                              horizontal: 20.0, vertical: 10.0),
+                              horizontal: 10.0, vertical: 10.0),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -183,7 +183,7 @@ class FinalDisaster extends StatelessWidget {
                                   updateStatus(),
                                 ],
                               ),
-                              SizedBox(width: 15.0),
+                              SizedBox(width: 12.0),
                               Container(
                                   child: Row(
                                 children: [
