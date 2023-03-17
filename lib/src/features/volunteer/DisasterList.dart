@@ -1,3 +1,7 @@
+import 'dart:core';
+
+
+import 'package:disaster_management/src/features/volunteer/DisasterDesc.dart';
 import 'package:disaster_management/src/features/volunteer/VolunteerReg.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
@@ -43,7 +47,7 @@ class DisasterList extends StatelessWidget {
                         'area': e['area'],
                         'currentStatus': e['currentStatus'],
                         'disasterType': e['disasterType'],
-                        // 'district':,
+                        // 'district':e['district'],
                       })
                   .toList();
 
@@ -53,10 +57,10 @@ class DisasterList extends StatelessWidget {
                   itemCount: items.length,
                   shrinkWrap: true,
                   itemBuilder: (context, i) {
-                    // final sortedDis = items
-                    // ..sort((item1, item2) =>
-                    //  item1.district.compareTo(item2.district));
-                    // Map disaster = sortedDis[i];
+                 //    final sortedDis = items
+                 //    ..sort((item1, item2) =>
+                 //     item1['district'].compareTo(item2['district']));
+                  //   Map disaster = sortedDis[i];
                     Map thisItem = items[i];
                     return FinalDisaster(thisItem['id']);
                   },
@@ -130,7 +134,7 @@ class FinalDisaster extends StatelessWidget {
       ));
     }
   }
-
+ 
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<DocumentSnapshot>(
@@ -143,7 +147,7 @@ class FinalDisaster extends StatelessWidget {
           if (snapshot.hasData) {
             DocumentSnapshot documentSnapshot = snapshot.data;
             data = documentSnapshot.data() as Map;
-
+            List<dynamic> images = data['ImageUrls'] as List<dynamic>;
             return Container(
                 width: MediaQuery.of(context).size.width,
                 padding: EdgeInsets.symmetric(horizontal: 3.0, vertical: 8.0),
@@ -201,12 +205,17 @@ class FinalDisaster extends StatelessWidget {
                             ],
                           ))),
                   onTap: () {
-                    // Navigator.push(
-                    //   context,
-                    //   MaterialPageRoute(
-                    //     builder: (context) => const Financialhelp1(),
-                    //   ),
-                    // );
+                    
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => DisasterDesc(
+                            '${data['disasterType']}',
+                            '${data['currentStatus']}',
+                            '${data['area']}',
+                            images),
+                      ),
+                    );
                   },
                 ));
           }

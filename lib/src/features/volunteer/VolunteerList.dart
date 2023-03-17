@@ -1,49 +1,177 @@
+import 'dart:core';
+
+
+import 'package:disaster_management/src/features/volunteer/DisasterDesc.dart';
+import 'package:disaster_management/src/features/volunteer/VolunteerReg.dart';
+import 'package:flutter/src/widgets/framework.dart';
+import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_storage/firebase_storage.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
-import './FinalVolunteer.dart';
+class VolunteerList extends StatelessWidget {
+  VolunteerList({Key? key}) : super(key: key) {
+    _stream = _reference.snapshots();
+  }
 
-class Volunteer {
-  late int id;
-  late String name;
-  late String cnumber;
-  late String district;
-  Volunteer(this.id, this.name, this.cnumber, this.district);
-}
+  final CollectionReference _reference =
+      FirebaseFirestore.instance.collection('volunteer_reg');
 
-class VolunteerList extends StatefulWidget {
- VolunteerList({Key? key}) : super(key: key);
-
-  @override
-  State<VolunteerList> createState() => _VolunteerListState();
-}
-
-class _VolunteerListState extends State<VolunteerList> {
-  List volunteers = [
-    Volunteer(1, "Shruti", "1234567890", "Pune"),
-    Volunteer(2, "Shrutika", "1234567890", "Nashik"),
-  ];
+  late Stream<QuerySnapshot> _stream;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text("Volunteers Available"),
+      backgroundColor: Color.fromARGB(255, 168, 220, 167),
+      appBar: AppBar(
+        title: Text("List of available Volunteers"),
+        backgroundColor: Colors.green,
+      ),
+      body: Container(
+        decoration: BoxDecoration(),
+        child: StreamBuilder<QuerySnapshot>(
+          stream: _stream,
+          builder: (BuildContext context, AsyncSnapshot snapshot) {
+            if (snapshot.hasError) {
+              return Center(
+                  child: Text('Some error occurred ${snapshot.error}'));
+            }
+
+            if (snapshot.hasData) {
+              QuerySnapshot querySnapshot = snapshot.data;
+              List<QueryDocumentSnapshot> documents = querySnapshot.docs;
+
+              List<Map> items = documents
+                  .map((e) => {
+                        'id': e.id,
+                        'name': e['name'],
+                        'number': e['number'],
+                        'district': e['district'],
+                        // 'district':,
+                      })
+                  .toList();
+
+              return Container(
+                child: ListView.builder(
+                  scrollDirection: Axis.vertical,
+                  itemCount: items.length,
+                  shrinkWrap: true,
+                  itemBuilder: (context, i) {
+                     final sortedDis = items
+                     ..sort((item1, item2) =>
+                      item1['district'].compareTo(item2['district']));
+                     Map disaster = sortedDis[i];
+                   // Map thisItem = items[i];
+                    return Volunteer(disaster['id']);
+                  },
+                ),
+              );
+            }
+
+            return Center(child: CircularProgressIndicator());
+          },
         ),
-        body: Container(
-          child: ListView.builder(
-              scrollDirection: Axis.vertical,
-              itemCount: volunteers.length,
-              shrinkWrap: true,
-              itemBuilder: (context, i) {
-                //  Map thisItem = volunteers[i];
-                //  final s1 = volunteers[i].district;
-                final sortedVol = volunteers
-                  ..sort((item1, item2) =>
-                      item1.district.compareTo(item2.district));
-                final volunteer = sortedVol[i];
-                return FinalVolunteer(
-                    volunteer.name, volunteer.cnumber, volunteer.district);
-              }),
-        ));
+      ),
+    );
+  }
+}
+
+class Volunteer extends StatelessWidget {
+ Volunteer(this.itemId, {Key? key}) : super(key: key) {
+    _reference = FirebaseFirestore.instance.collection('volunteer_reg').doc(itemId);
+    _futureData = _reference.get();
+  }
+
+  String itemId;
+  late DocumentReference _reference;
+  late Future<DocumentSnapshot> _futureData;
+  late Map data;
+
+  
+ 
+  @override
+  Widget build(BuildContext context) {
+    return FutureBuilder<DocumentSnapshot>(
+        future: _futureData,
+        builder: (BuildContext context, AsyncSnapshot snapshot) {
+          if (snapshot.hasError) {
+            return Center(child: Text('Some error occurred ${snapshot.error}'));
+          }
+
+          if (snapshot.hasData) {
+            DocumentSnapshot documentSnapshot = snapshot.data;
+            data = documentSnapshot.data() as Map;
+         
+            return Container(
+                width: MediaQuery.of(context).size.width,
+                padding: EdgeInsets.symmetric(horizontal: 3.0, vertical: 8.0),
+                margin: EdgeInsets.symmetric(horizontal: 2.0, vertical: 3.0),
+                child: InkWell(
+                  child: Card(
+                      elevation: 5.0,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(4.0),
+                      ),
+                      child: Container(
+                          width: MediaQuery.of(context).size.width,
+                          padding: EdgeInsets.symmetric(
+                              horizontal: 10.0, vertical: 10.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Column(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Container(
+                                    padding: EdgeInsets.symmetric(
+                                        horizontal: 4.0, vertical: 4.0),
+                                    margin: EdgeInsets.symmetric(
+                                        horizontal: 3.0, vertical: 3.0),
+                                    child: Text('${data['name']}',
+                                        style: TextStyle(
+                                            fontSize: 18.0,
+                                            fontWeight: FontWeight.bold,
+                                            color: Color.fromARGB(
+                                                255, 195, 17, 4))),
+                                  ),
+                                  // SizedBox(height: 5.0),
+                                    Container(
+                                    padding: EdgeInsets.symmetric(
+                                        horizontal: 4.0, vertical: 4.0),
+                                    margin: EdgeInsets.symmetric(
+                                        horizontal: 3.0, vertical: 3.0),
+                                    child: Text('${data['number']}',
+                                        style: TextStyle(
+                                            fontSize: 18.0,
+                                            fontWeight: FontWeight.bold,
+                                            color: Color.fromARGB(255, 71, 70, 70))),
+                                  ),
+                                ],
+                              ),
+                              SizedBox(width: 12.0),
+                              Container(
+                                  child: Row(
+                                children: [
+                                  Icon(Icons.location_on,
+                                      color: Color.fromARGB(255, 75, 77, 76)),
+                                  SizedBox(width: 5.0),
+                                  Text('${data['district']}',
+                                      style: TextStyle(
+                                        fontSize: 15.0,
+                                        fontWeight: FontWeight.bold,
+                                        // color: Color.fromARGB(153, 23, 1, 1),
+                                      )),
+                                ],
+                              ))
+                            ],
+                          ))),
+               
+                ));
+          }
+          return Center(child: CircularProgressIndicator());
+        });
   }
 }
