@@ -21,14 +21,17 @@ class DisasterDesc extends StatelessWidget {
   
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return Scaffold( 
+       backgroundColor: Color.fromARGB(255, 168, 220, 167),
         appBar: AppBar(
           title: Text("Disaster Description"),
           backgroundColor: Colors.green,
         ),
-        body: Container(
+        body: Container( 
+          //backgroundColor: Colors.green,
           child: Column(children: [
             Container(
+              
               padding:EdgeInsets.all(5.0),
               margin:EdgeInsets.all(1.0),
               child: CarouselSlider.builder(
@@ -64,20 +67,20 @@ class DisasterDesc extends StatelessWidget {
                     Text(
                       "Information about the Reported disaster",
                       style: TextStyle(
-                        color: Colors.green[800]!,
+                         color: Colors.green[800]!,
                         fontSize: 24.0,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                     SizedBox(
-                      height: 16.0,
+                      height: 25.0,
                     ),
                     Container(
                         child: Row(
                       children: [
-                        Text("Disaster Type-",
+                        Text("Disaster Type :-",
                             style: TextStyle(
-                              fontSize: 20.0,
+                              fontSize: 17.0,
                               fontWeight: FontWeight.bold,
                               // color: Color.fromARGB(153, 23, 1, 1),
                             )),
@@ -91,14 +94,14 @@ class DisasterDesc extends StatelessWidget {
                       ],
                     )),
                     SizedBox(
-                      height: 10.0,
+                      height: 13.0,
                     ),
                    Container(
                         child: Row(
                       children: [
-                        Text("Location-",
+                        Text("Location :-",
                             style: TextStyle(
-                              fontSize: 20.0,
+                              fontSize: 17.0,
                               fontWeight: FontWeight.bold,
                               // color: Color.fromARGB(153, 23, 1, 1),
                             )),
@@ -112,14 +115,14 @@ class DisasterDesc extends StatelessWidget {
                       ],
                     )),
                     SizedBox(
-                      height: 10.0,
+                      height: 13.0,
                     ),
                       Container(
                         child: Row(
                       children: [
-                        Text("Current Status-",
+                        Text("Current Status :-",
                             style: TextStyle(
-                              fontSize: 20.0,
+                              fontSize: 17.0,
                               fontWeight: FontWeight.bold,
                               // color: Color.fromARGB(153, 23, 1, 1),
                             )),
@@ -152,7 +155,7 @@ class DisasterDesc extends StatelessWidget {
                               horizontal: 7, vertical: 3),
                           decoration: BoxDecoration(
                               color: Colors.green,
-                              borderRadius: BorderRadius.circular(2)),
+                              borderRadius: BorderRadius.circular(20)),
                           child: InkWell(
                               child: const Padding(
                                 padding: EdgeInsets.all(8.0),
@@ -177,7 +180,7 @@ class DisasterDesc extends StatelessWidget {
                               horizontal: 7, vertical: 3),
                           decoration: BoxDecoration(
                               color: Colors.green,
-                              borderRadius: BorderRadius.circular(2)),
+                              borderRadius: BorderRadius.circular(20)),
                           child: InkWell(
                               child: const Padding(
                                 padding: EdgeInsets.all(8.0),

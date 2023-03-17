@@ -94,7 +94,7 @@ class _Financialhelp1State extends State<Financialhelp1> {
             return Scaffold(
               appBar: AppBar(
                 title: const Text("Pay to help"),
-                backgroundColor: Colors.green[800]!,
+                backgroundColor: Colors.green,
               ),
               body: Center(
                 child: Column(
