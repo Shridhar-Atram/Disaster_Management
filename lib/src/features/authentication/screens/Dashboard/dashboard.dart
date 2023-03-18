@@ -230,6 +230,9 @@ class _DashboardState extends State<Dashboard> {
                       color: Color.fromARGB(255, 220, 241, 198),
                     ),
                   ),
+                  // SizedBox(
+                  //   width: 0.000001,
+                  // ),
                   GestureDetector(
                     onTap: () {
                       Navigator.push(
@@ -293,6 +296,9 @@ class _DashboardState extends State<Dashboard> {
                       color: Color.fromARGB(255, 220, 241, 198),
                     ),
                   ),
+                  // SizedBox(
+                  //   height: 10,
+                  // ),
                   GestureDetector(
                     onTap: () {
                       Navigator.push(
