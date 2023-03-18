@@ -17,7 +17,7 @@ class DisasterDesc extends StatelessWidget {
   String currentStatus;
   String area;
   List<dynamic> images;
-
+   
   
   @override
   Widget build(BuildContext context) {
@@ -30,6 +30,7 @@ class DisasterDesc extends StatelessWidget {
         body: Container( 
           //backgroundColor: Colors.green,
           child: Column(children: [
+            if(!images.isEmpty)
             Container(
               
               padding:EdgeInsets.all(5.0),
@@ -52,11 +53,14 @@ class DisasterDesc extends StatelessWidget {
                     aspectRatio: 16 / 9,
                     autoPlayCurve: Curves.fastOutSlowIn,
                     enableInfiniteScroll: true,
-                    autoPlayAnimationDuration: Duration(milliseconds: 800),
+                    autoPlayAnimationDuration: Duration(milliseconds: 600),
                     viewportFraction: 0.8,
                   )),
             ),
             Container(
+                width: MediaQuery.of(context).size.width,
+                padding: EdgeInsets.symmetric(horizontal: 3.0, vertical: 8.0),
+                margin: EdgeInsets.symmetric(horizontal: 2.0, vertical: 3.0),
               //child: Center(
               child: Padding(
                 padding: const EdgeInsets.all(28.0),
@@ -80,14 +84,14 @@ class DisasterDesc extends StatelessWidget {
                       children: [
                         Text("Disaster Type :-",
                             style: TextStyle(
-                              fontSize: 17.0,
+                              fontSize: 15.0,
                               fontWeight: FontWeight.bold,
                               // color: Color.fromARGB(153, 23, 1, 1),
                             )),
                         SizedBox(width: 10.0),
                         Text(itemDisaster,
                             style: TextStyle(
-                              fontSize: 15.0,
+                              fontSize: 13.0,
                               fontWeight: FontWeight.bold,
                               color: Color.fromARGB(153, 23, 1, 1),
                             )),
@@ -101,14 +105,14 @@ class DisasterDesc extends StatelessWidget {
                       children: [
                         Text("Location :-",
                             style: TextStyle(
-                              fontSize: 17.0,
+                              fontSize: 15.0,
                               fontWeight: FontWeight.bold,
                               // color: Color.fromARGB(153, 23, 1, 1),
                             )),
                         SizedBox(width: 10.0),
                         Text(area,
                             style: TextStyle(
-                              fontSize: 15.0,
+                              fontSize: 13.0,
                               fontWeight: FontWeight.bold,
                               color: Color.fromARGB(153, 23, 1, 1),
                             )),
@@ -122,14 +126,14 @@ class DisasterDesc extends StatelessWidget {
                       children: [
                         Text("Current Status :-",
                             style: TextStyle(
-                              fontSize: 17.0,
+                              fontSize: 15.0,
                               fontWeight: FontWeight.bold,
                               // color: Color.fromARGB(153, 23, 1, 1),
                             )),
                         SizedBox(width: 10.0),
                         Text(currentStatus,
                             style: TextStyle(
-                              fontSize: 15.0,
+                              fontSize: 13.0,
                               fontWeight: FontWeight.bold,
                               color: Color.fromARGB(153, 23, 1, 1),
                             )),
