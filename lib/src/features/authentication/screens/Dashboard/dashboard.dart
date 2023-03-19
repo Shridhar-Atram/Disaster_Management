@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:disaster_management/src/features/authentication/screens/Dashboard/MyHeaderDrawer.dart';
 import 'package:disaster_management/src/features/volunteer/DisasterList.dart';
+import 'package:disaster_management/src/features/volunteer/VolunteerList.dart';
 import 'package:disaster_management/src/features/volunteer/VolunteerReg.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -67,7 +68,7 @@ class _DashboardState extends State<Dashboard> {
       appBar: AppBar(
         centerTitle: true,
         title: const Text(
-          'Diseastor  Management',
+          'Disaster  Management',
         ),
         backgroundColor: Colors.green,
       ),
@@ -100,6 +101,19 @@ class _DashboardState extends State<Dashboard> {
                 _signOut();
               },
             ),
+            ListTile(
+                leading: const Icon(
+                  Icons.list,
+                ),
+                title: const Text("Volunteers Available"),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => VolunteerList(),
+                    ),
+                  );
+                }),
           ],
         ),
       ),

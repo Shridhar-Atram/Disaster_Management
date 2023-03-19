@@ -220,7 +220,8 @@ class FinalDisaster extends StatelessWidget {
                   },
                 ));
           }
-          return Center(child: CircularProgressIndicator());
+          //  return Center(child: CircularProgressIndicator());
+          return Center();
         });
   }
 }

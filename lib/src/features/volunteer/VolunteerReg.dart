@@ -1,3 +1,4 @@
+import 'package:disaster_management/src/features/authentication/screens/Dashboard/dashboard.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -319,7 +320,17 @@ class _VolunteerRegState extends State<VolunteerReg> {
                           'interests': vInterests,
                         };
                         _reference.add(dataToSend);
-                        clearText();
+                     //   clearText();
+                      Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => Dashboard()
+                      ),
+                    );
+                        ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                        content:
+                                            Text('Volunteer Registered Successfully')));
                       }
                     }))
           ]),
