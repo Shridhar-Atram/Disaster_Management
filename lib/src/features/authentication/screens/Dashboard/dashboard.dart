@@ -92,16 +92,7 @@ class _DashboardState extends State<Dashboard> {
                 );
               },
             ),
-            ListTile(
-              leading: const Icon(
-                Icons.train,
-              ),
-              title: const Text("Log out"),
-              onLongPress: () {
-                _signOut();
-              },
-            ),
-            ListTile(
+             ListTile(
                 leading: const Icon(
                   Icons.list,
                 ),
@@ -114,6 +105,16 @@ class _DashboardState extends State<Dashboard> {
                     ),
                   );
                 }),
+            ListTile(
+              leading: const Icon(
+                Icons.train,
+              ),
+              title: const Text("Log out"),
+              onLongPress: () {
+                _signOut();
+              },
+            ),
+           
           ],
         ),
       ),
