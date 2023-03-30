@@ -9,7 +9,7 @@ Cloning the repository
 To clone the repository, open a terminal window and navigate to the directory where you want to store the project. Then, run the following command:
 
 bash Copy code
-git clone https://github.com/username/repo-name.git
+git clone https://github.com/Shridhar-Atram/Disaster_Management.git
 Replace username with your GitHub username and repo-name with the name of the repository.
 
 Running the app
