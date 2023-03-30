@@ -7,14 +7,11 @@ Flutter SDK
 Android Studio or Xcode (depending on whether you want to run the app on an Android or iOS device)
 Cloning the repository
 To clone the repository, open a terminal window and navigate to the directory where you want to store the project. Then, run the following command:
-
-bash Copy code
 git clone https://github.com/Shridhar-Atram/Disaster_Management.git
-Replace username with your GitHub username and repo-name with the name of the repository.
+
 
 Running the app
 To run the app, follow these steps:
-
 Open Android Studio or Xcode.
 Click on "Open an existing project" and select the directory where you cloned the repository.
 Wait for the project to sync and install all dependencies.
