@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get_rx/src/rx_types/rx_types.dart';
 
 import 'package:percent_indicator/circular_percent_indicator.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../constants/sizes.dart';
 import '../../../reporting_and_mapping/google_map_screen.dart';
@@ -74,7 +75,6 @@ class _DashboardState extends State<Dashboard> {
       ),
       drawer: Drawer(
         child: ListView(
-          // Important: Remove any padding from the ListView.
           padding: EdgeInsets.zero,
           children: [
             MyHeaderDrawer(),
@@ -92,7 +92,7 @@ class _DashboardState extends State<Dashboard> {
                 );
               },
             ),
-             ListTile(
+            ListTile(
                 leading: const Icon(
                   Icons.list,
                 ),
@@ -114,7 +114,15 @@ class _DashboardState extends State<Dashboard> {
                 _signOut();
               },
             ),
-           
+            ListTile(
+                leading: const Icon(
+                  Icons.privacy_tip,
+                ),
+                title: const Text("Privacy Policy"),
+                onTap: () async{
+                  Uri uri=Uri.parse("https://www.freeprivacypolicy.com/live/ed5b2359-56a6-43e6-b22f-37aa2ad5b510");
+                  await launchUrl(uri);
+                },),
           ],
         ),
       ),

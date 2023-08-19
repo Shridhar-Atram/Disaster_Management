@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_instance/get_instance.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import '../../../../../constants/sizes.dart';
 
@@ -14,6 +13,7 @@ class OTPScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var otp;
+    // ignore: unused_local_variable
     var otpController = Get.put(OTPController());
     return Scaffold(
       body: Container(
@@ -23,8 +23,6 @@ class OTPScreen extends StatelessWidget {
           children: [
             Text(
               totpTitle,
-              style: GoogleFonts.montserrat(
-                  fontWeight: FontWeight.bold, fontSize: 80.0),
             ),
             Text(totpSubTitle.toUpperCase(),
                 style: Theme.of(context).textTheme.headline6),
